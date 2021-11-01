@@ -1,0 +1,271 @@
+<!DOCTYPE HTML>
+<!--
+	Helios by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>A SERVERLESS PROJECT</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-174482799-2"></script>
+		<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-174482799-2');
+		</script>
+
+	</head>
+	<body class="no-sidebar is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header
+				<div id="header">
+					<div class="inner">
+						<header>
+							<h1><a href="index.html" id="logo">A SERVELESS PROJECT</a></h1>
+						</header>
+					</div>
+				</div>
+	-->
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+			<link rel="stylesheet" href="assets/css/style.css">
+	
+			<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+			<script src="assets/js/index.js"></script>
+			
+			
+			<!-- Main -->
+			<div class=WordSection1>
+<div class="wrapper style1">
+
+				<div class="container">
+				<article id="main" class="special">
+										<header>
+							<h2><a href="#">Pizzeria - now on AIR</a></h2>
+							<p>
+								This is the online pizza ordering portal which utilizes the power of serverless service by AWS.
+							</p>
+						</header>
+
+<p class=MsoNormal>This is the second serverless project that I recreated from
+another book “Serverless Application with Node.js Using AWS Lambda and
+Claudia.js” from the author Slobodan Stojanovic and Aleksandar Simovic</p>
+
+<p class=MsoNormal>The book is all about the two projects one of which is to
+move the Offline business of the Fictitious character Aunt Maria Pizzeria
+business to online.</p>
+
+<p class=MsoNormal>It has a very nice and minimal introduction to the Claudia
+JS framework which encapsulates the configuration and integration of API
+Gateway and lambda.</p>
+
+<p class=MsoNormal>Now, this pizzeria app has multiple channels which are
+completely separated from each other to order/cancel/payment and all the basic
+service that online pizza ordering system has  for Aunt Maria's Pizeeria shop.</p>
+
+<p class=MsoListParagraphCxSpFirst style='text-indent:-18.0pt'>1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Web
+channel </p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'>2.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Facebook
+chatbot</p>
+
+<p class=MsoListParagraphCxSpMiddle style='text-indent:-18.0pt'>3.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>SMS
+chatbot</p>
+
+<p class=MsoListParagraphCxSpLast style='text-indent:-18.0pt'>4.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Payment
+channel</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><img src="pizzeria_files/image001.jpg" class="image featured"></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>All these channels were separated and developed in an
+isolated environment(lambda functions) and a single API is used to route the
+request to the targeted function.</p>
+
+<p class=MsoNormal>This is the same architecture used in the modern-day
+microservices which removes dependency and load from the system, as compared to
+the monolithic architecture.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>Next section we will explore more about the architecture of
+the Web, Facebook, and SMS chat boot.</p>
+
+<p class=MsoNormal>As a Bonus!! This book also expose you to another project
+where it demonstrates the migration of on-prem Express.js architecture to the serverless,
+if you know about the lambda function or any other FaaS it is designed to serve
+as single request at a time and not meant to be used as the webserver but it is
+possible to serve the express.js web server in the lambda function.</p>
+
+<p class=MsoNormal>You may think using the lambda as a webserver is like an antipattern
+design, but they do have a very convincing explanation. Please do look once you
+have done with the Pizzeria app.</p>
+
+<p class=MsoNormal><b>&nbsp;</b></p>
+
+<p class=MsoNormal><b>WEB CHANNEL</b></p>
+
+<p class=MsoNormal>Services, Framework, and language used:</p>
+
+<p>1.<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>AWS Lambda</p>
+
+<p>2.<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>AWS API Gateway</p>
+
+<p>3.<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Claudia API builder framework for Node.js</p>
+
+<p>4.<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Node.js</p>
+
+<p>5.<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>AWS Dynamo DB</p>
+
+<p class=MsoNormal>Let start with the Web Channel </p>
+
+<p class=MsoNormal>A normal order request contains the following </p>
+
+<p><span style='font-family:Symbol'>·<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><b>Get Order</b> – This event will trigger when a user try to find the available pizza from the user interface</p>
+
+<p><span style='font-family:Symbol'>·<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><b>Create Order</b> – Event when the user made a request for a particular pizza, which then will be saved to the storage DB</p>
+
+<p><span style='font-family:Symbol'>·<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><b>Update Order</b> – Though update order includes several other things an order can have but for simplicity we only using the <i>update order</i> for changing the state of the order for example  changing the order state from <i>pending</i> to <i>in-progress</i> and finally <i>delivered</i></p>
+
+<p><span style='font-family:Symbol'>·<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><b>Delete Order or Cancel Order</b> – When user wins over his craving and decides eat salad instead.</p>
+
+<p class=MsoNormal>Every path you see in the below figure is the separate path that was created by the Claudia API Builder to serve the request from the user and send/receive the feed/response from their correspoing the lambda function, which them server back to the user accordingly</p>
+
+<p class=MsoNormal><img src="pizzeria_files/image002.jpg" class="image featured"></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p>1.<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>The user sends the request from a mobile or web application that will be transmitted to backend logic through the API Gateway.</p>
+
+<p>2.<span>&nbsp;&nbsp;</span>Since we are processing all the functions in the same lambda function we need to do internal routing to find action(GET/POST/PUT/DELETE) should trigger the proper handler function(get_orders.js/create-order.js/update-order.js etc). </p>
+
+<p>3.<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Based on the received request, Claudia API invokes corresponding handlers</p>
+
+<p>4.<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>API Gateway parse the request and send to the corresponding service for example creating new order a <b>POST</b> request sent to the <b>“/orders”</b> path and its corresponding handler create-order.js will get triggered to serve it likewise for retrieving a list of orders a GET request sent to the <b>“/pizzas”</b> path and its corresponding handler <b>get-order.js</b> gets triggered.</p>
+
+<p>5.<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Once the request is fulfilled by the lambda handler response travel back to the user through Claudia to API Gateway</p>
+
+<p>&nbsp;</p>
+
+<p>Every ordering system has to store the order in some location, so that I can be referenced later. </p>
+
+<p>To have the persistent storage of the order we will be using the Dynamo DB </p>
+
+<p>DynamoDB tables are similar to collections in traditional NoSQL database, it can store the data in key-value and document data structure, in this project we are using the Key-value format</p>
+
+<p>&nbsp;</p>
+
+<p>The below figure will show us how the function will interact with Dynamo DB and stores the information about order </p>
+
+<p>&nbsp;</p>
+
+<p><img src="pizzeria_files/image003.jpg" class="image featured"></p>
+
+<p>&nbsp;</p>
+
+<p>Once oder is placed we use a third-party API to handles the delivery state of our order</p>
+
+<p>Basic functionality of this dummy API is to return then delivery ID immediately when a request is sent to it and after some time(approx. 2 minutes ) it will send the delivery status of the order using the webhook.</p>
+
+<p >&nbsp;</p>
+
+<p >When a create order request is sent to its function names <b><i>create-order.js,</i></b> it calls the delivery API(ie Dummy API) to inform the delivery service of the new order and  in return this dummy API will returns the unique delivery id against order request.</p>
+
+<p >Upon receiving the response from the Dummy API  <b>create-order</b> function will make the entries in the Dynamo DB table to save the state of the order.</p>
+
+<p ><img src="pizzeria_files/image004.jpg" class="image featured"></p>
+
+<p >&nbsp;</p>
+
+<p >Detailed illustration of the order flow from customers to delivery API.</p>
+
+<p>1.<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span >The customer requested the Pizza API</span></p>
+
+<p>2.<span>&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span style='color:#538135'>A new order request will trigger the <i>create_order</i> function which makes entry to the DynamoDB with the status of order “<i>pending</i>” and trigger the Dummy API “Some Like it Hot Delivery”</span></p>
+
+<p><spanstyle='color:#7030A0'>3.<span >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span style='color:#7030A0'>Dummy API will return the response with the delivery id</span></p>
+
+<p><span style='color:#538135'>4.<span >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span style='color:#538135'>On the above event response, it triggers the <i>update_order</i> function which updates the status of  an order from “<i>pending</i>” to “<i>in-progress</i>” to the Dynamo DB</span></p>
+
+<p><span>5.<span >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span style='color:#7030A0'>After 2 minutes Dummy API again send a response to the Pizza API which mark the order status to “<i>Delivery </i>” </span></p>
+
+<p >&nbsp;</p>
+
+<p ><img src="pizzeria_files/image005.jpg" class="image featured"></p>
+
+<p >This is all we have to configure and code to make it all work.</p>
+
+<p >In the next section we will make a frontend which communicate to all of the above functions through API</p>
+
+<p>STAY TUNED</p>
+
+<h><b>PEACE..!!<b></h>
+</article>
+</div>
+</div>
+
+
+<!-- Footer -->
+<div id="footer">
+	<div class="container">
+
+
+		<div class="row">
+			<div class="col-12">
+
+				<!-- Contact -->
+				<section class="contact">
+					<header>
+						<h3>Diving in the abyss of serverless. </h3>
+					</header>
+					<p font-weight="700">Hi this is Ruben Rao. Its my first attempt to develop any project completely on the serverless services. This website demonstrates all my project behind the scenes, that I’ve completed to explore and learn serverless services</p>
+					<ul class="icons">
+						<li><a href="https://twitter.com/ruben_rao10" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="https://www.facebook.com/ruben.rao.75" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+						<li><a href="https://www.instagram.com/ruben_rao/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+
+					</ul>
+				</section>
+
+				<!-- Copyright -->
+				<div class="copyright">
+					<ul class="menu">
+						<li>Managed by Ruben Rao.</li>
+						<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
