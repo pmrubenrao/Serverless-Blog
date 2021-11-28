@@ -2793,8 +2793,8 @@ body.homepage.is-preload #header:after {
   /* Wrapper */
 
   .wrapper {
-    padding-left: 2em;
-    padding-right: 2em;
+    padding-left: 6em;
+    padding-right: 6em;
   }
 
   /* Header */
@@ -3010,7 +3010,7 @@ body.homepage.is-preload #header:after {
   /* Wrapper */
 
   .wrapper {
-    padding: 3em 1em 3em 1em;
+    padding: 3em 3em 3em 3em;
   }
 
   /* Header */
