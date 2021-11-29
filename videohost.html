@@ -32,12 +32,10 @@
 					<header>
 						<h2><a href="#">Video hosting website</a></h2>
 						<p>
-							This project utilizes the power of the serverless services out there in the wild.</p>
-						
+							This project utilizes the power of the serverless services out there in the wild.</p>						
 					</header>
 					<p>
-						<img class="image featured" src="images/pic06.jpg" />
-										
+						<img class="image featured" src="images/pic06.jpg" />			
 					<p>
 						So I came across this amazing book on Serverless Architectures on AWS With examples using AWS Lambda by Peter Sbarski which is a whole project in the form of a book that explains almost everything from the basics to building and fairly complex architecture to host the whole video hosting website.
 						<br/><br/>
@@ -73,7 +71,7 @@
 						You just have to start it without thinking too much.
 						<br/><br/>
 						So, let us begin with the first module.
-						<br/><br/><br/><br/>
+						<br/><br/><br/>
 						Services used:
 						<br/>
 						<ol>
@@ -87,7 +85,8 @@
 						Every Video hosting site has a video transcoder that converts the video to be able to watch on multiple devices.
 						<br/><br/>
 						S3 bucket is used for storing the uploaded videos and it will be integrated with Lambda to trigger the Elastic transcode whose sole purpose is to create the video in a different format like 360p, 720p, 1080p.
-						<a href="#" class="image featured"><img src="Videohost_files/image002.jpg" alt="" /></a>
+						<br/><br/>
+						<a href="#" class="image featured"><img src="Videohost_files/image001.png" alt="" /></a>
 						<ol>
 							<li>User-uploaded data went to S3 object Storage.</li>
 							<li>As soon as the video is uploaded it triggers the Lambda function as configured in the event section in the S3 properties.</li>
@@ -96,7 +95,7 @@
 							<li>The job will then be submitted to the Elastic Transcoder for processing</li>
 							<li>The submitted job is then executed by the Elastic Transcoder and generate the 3-video format</li>
 							<li>These newly created video formats were then saved in another S3 bucket.</li>
-							
+							<br/>
 							<a href="#" class="image featured"><img src="Videohost_files/image003.png" alt="" /></a>
 							<li>Now we have all the format (320p,720p,1080p) in new S3 bucket</li>
 							<li>Just like we have event configured in the upload s3 bucket which triggers the lambda function for the transcoder job, this time we trigger the SNS service for notification.</li>
@@ -116,8 +115,8 @@
 						<br/>
 						Adding authentication to the website which allows user to login in and browses through the personalized content, by personalized I meant the user’s uploaded content.
 						<br/><br/>
-						<b>Services used:</b>
-						<br/>
+						Services used:
+						<br/><br/>
 						<ol>
 							<li>AWS Lambda</li>
 							<li>API Gateway</li>
@@ -137,40 +136,33 @@
 							<li>API Gateway passes the received JWT token to the lambda function.</li>
 							<li>Lambda function validates the JWT token and generates a response sends back to API Gateway and eventually reaches the client application.</li>
 						</ol>
-						
 						<a href="#" class="image featured"><img src="Videohost_files/image005.png" alt="" /></a>
-
 						<b>Third module:</b>
 						<br/>
-
 						Since we are transcoding the video in appropriate formats, the transcoder needs some time to build those formats
 						<br/><br/>
 						This module is for adding the buffer time, so that once the user upload video completes frontend show animation which denotes the uploaded video in under transcodeing phase this is done  by maintaining an entry in the Google Firebase database which mark the video transcoding : True  for video under this phase
 						<br/><br/>
 						The final architecture looks like this.
-
-						
-						<a href="#" class="image featured"><img src="Videohost_files/image007.png" alt="" /></a>
-						<br/><br/>
+						<br/>				
+						<a href="#" class="image featured"><img src="Videohost_files/image007.png" alt="" /></a>						
 						As the video is sent to the transcoder, we will make an entry to the firebase database will make entry to its database by setting its transcoding value to true.
-						
 						<a href="#" class="image featured"><img src="Videohost_files/image009.png" alt="" /></a>
-						<br/><br/>
 						And the lambda function which gets the list of all transcoded videos from the S3 bucket is designed to pick only those videos whose transcoding value is false.
 						<br/><br/>
 						During the course through this book, you will create several lambda functions which will get minor updates now and then as you move through the different chapters.
 						<br/><br/>
 						<ol>
-							<li>Extract-metadata - for extracting and storing the metadata of uploaded videos</li>
-							<li>Get-video-list - to get the list of transcoded videos which is used by the frontend to display on the website</li>
-							<li>Get-signed-URL - this is used to generate the private signed URL for all the videos</li>
-							<li>Get-upload-policy - used by custom authorizer to allow only authenticated user to watch the videos</li>
-							<li>Set-permission - set the permission to allow the video to be accessible publicly which you’ll abandon once you create the get-signed-URL function</li>
-							<li>Transcode-video - it creates the data for the transcoder job which then trigger the Elastic transcoder</li>
-							<li>Transcode-video-firebase-update - firebase integration</li>
-							<li>User- profile  - Introduce the Auth0 authentication to the website, you might be stuck here because of the recent update in the auth0 links</li>
+							<li><b>Extract-metadata</b> - for extracting and storing the metadata of uploaded videos</li>
+							<li><b>Get-video-list</b> - to get the list of transcoded videos which is used by the frontend to display on the website</li>
+							<li><b>Get-signed-URL</b> - this is used to generate the private signed URL for all the videos</li>
+							<li><b>Get-upload-policy</b> - used by custom authorizer to allow only authenticated user to watch the videos</li>
+							<li><b>Set-permission</b> - set the permission to allow the video to be accessible publicly which you’ll abandon once you create the get-signed-URL function</li>
+							<li><b>Transcode-video</b> - it creates the data for the transcoder job which then trigger the Elastic transcoder</li>
+							<li><b>Transcode-video-firebase-update</b> - firebase integration</li>
+							<li><b>User- profile</b>  - Introduce the Auth0 authentication to the website, you might be stuck here because of the recent update in the auth0 links</li>
 						</ol>
-						<br/><br/>
+						<br/>
 						There were other parts to the projects which I skipped so that I would not overwhelm you guys
 						<br/><br/>
 						For the beginners, I know for start, it seems too much to take on, but believe me, all the parts of the chapters were designed to build the smallest module first and building it pieces by pieces to the final big module.
@@ -179,7 +171,8 @@
 						<br/><br/>
 						If you are interested to explore the world of serverless you would love it.
 						<br/><br/>
-						<b>PS:</b> there were some bugs in the code provided by the author but I suggest you should first google it, I found all of my answers through google or reading to a rubber duck or by taking a walk, but if you feel lost you can contact me at pmrubenrao@gmail.com
+						<b>PS:</b> There were some bugs in the code provided by the author but its fixable and I suggest you should first google it, I found all of my answers through google or reading it to a rubber duck or by taking a walk, but if you feel lost you can contact me at <b>pmrubenrao@gmail.com</b>
+					</p>
                 </div>
 			</div>
 		</div>
@@ -187,8 +180,6 @@
 		<!-- Footer -->
 		<div id="footer">
 			<div class="container">
-
-
 				<div class="row">
 					<div class="col-12">
 
@@ -213,9 +204,7 @@
 								<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
 							</ul>
 						</div>
-
 					</div>
-
 				</div>
 			</div>
 		</div>
