@@ -1,9 +1,4 @@
 <!DOCTYPE HTML>
-<!--
-	Helios by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
 	<head>
 		<title>SERVERLESS PROJECT</title>
@@ -16,287 +11,269 @@
 		window.dataLayer = window.dataLayer || [];
 		function gtag(){dataLayer.push(arguments);}
 		gtag('js', new Date());
-
 		gtag('config', 'UA-174482799-2');
 		</script>
 		
 	</head>
 	<body class="no-sidebar is-preload">
 		<div id="page-wrapper">
-
-			<!-- Header
-				<div id="header">
-					<div class="inner">
-						<header>
-							<h1><a href="index.html" id="logo">A SERVELESS PROJECT</a></h1>
-						</header>
-					</div>
-				</div>
-	-->
 			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-
-
-			<link rel="stylesheet" href="assets/css/style.css">
-	
+			<link rel="stylesheet" href="assets/css/style.css">	
 			<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-
 			<script src="assets/js/index.js"></script>
 			
 			
 			<!-- Main -->
 			<div class=WordSection1>
-<div class="wrapper style1">
-
-				<div class="container">
-				<article id="main" class="special">
-										<header>
+				<div class="wrapper style1">
+					<div class="container">
+						<article id="main" class="special">
+						<header>
 							<h2><a href="#">Pizzeria - now on AIR [ PART-2 ]</a></h2>
-							<p>
-								This is the online pizza ordering portal which utilizes the power of serverless service by AWS.
-							</p>
+							<p>This is the online pizza ordering portal which utilizes the power of serverless service by AWS.</p>							
 						</header>
 
-<p><b>PART-2 Facebook Chatbot for odering pizza</b></p>
+						<b>PART-2 Facebook Chatbot for odering pizza</b>
+						<br/>
+						<br/>
+						In the previous post, we build the APIs for ordering, updating, and canceling an order that can be used as the backend of an ordering system.
+						<br/>
+						<br/>
+						In this post, we will put in a path to use the Facebook support of chatbot APIs for replicating the same ordering system from Facebook Messenger. To keep this post small and avoid TL;DR we will be focusing just on basic things like setting up the connection to Facebook to backend node.js app and only respond with a simple “Hello” message from it.
+						<br/>
+						<br/>
+						So, let’s start building our chatbot.
+						<br/>
+						<br/>
+
+						<b>Set Up for Facebook chatbot : </b>
+						<br/>
+						We need a <i>Facebook application</i> that will link with your <i>Facebook page</i> which acts as a frontend of your messaging and all the heavy lifting of integration is done through the Facebook Application.
+
+						Facebook Application for chat-bot isn’t</span> independent, like games developed on Facebook. There has to</span> be some front-end page that our application will latch him to do what it is meant to more like symbiote.
+						<br/>
+						<br/>
+
+						<b>Steps for creating a Facebook Chatbot:</b>
+						<ol>
+							<li>Setup a Facebook page.</li>
+							<li>Create a Facebook application that will serve your chatbot and connect it to Facebook page.</li>
+							<li>Implement your chatbot and deploy it. BackEnd – require AWS lambda[language - node.js], API Gateway. </li>
+							<li>Connect your backend chatbot app to your Facebook application.</li>
+						</ol>
+						<br/>
+						We will be using the Claudia Bot Builder to interact with Facebook API’s for chatbot as it abstracts away the various messaging platform APIs and provides a simple, unified API for building you chatbots
+						<br/>
+						<br/>
+						<img src="pizzeria-chatbot_files/image001.jpg" class="image featured">
+						<br/>
+						<br/>
+						<b>Setting up the Claudia Bot Builder in local.</b>
+						<br/>
+						Create a new folder named <i>facebook-chatbot”</i> and initialize you NPM project and create the entry point to bot.js <i>this</i></span><i> is the entry point for your application </i>
+						<br/>
+						<br/>
+						<code>mkdir facebook-chatbot</code>
+						<br/>
+						<br/>
+						<code>npm init</code>
+						<br/>
+						<br/>
+						<b>Installing Claudia:</b>
+						<br/>
+						To install Claudia and make the Claudia command available in your terminal run the following command:
+						<br/>
+						<br/>
+						<code>npm install claudia -g</code>
+						<br/>
+						<br/>
 
-<p>In the previous post, we build the APIs for ordering, updating, and canceling an order that can be used as the backend of an ordering system.</p>
+						For installing run Claudia Bot Builder as a project dependency
 
-<p>In this post, we will put in a path to use the Facebook support of chatbot APIs for replicating the same ordering system from Facebook Messenger. To keep this post small and avoid TL;DR we will be focusing just on basic things like setting up the connection to Facebook to backend node.js app and only respond with a simple “Hello” message from it.</p>
+						<code>install claudia-bot-builder –save</code>
 
-<p>So, let’s start building our chatbot.</p>
+						&nbsp;
 
-<p >&nbsp;</p>
+						Inside your project folder <i>facebook</i></span><i>-chatbot</i>”create a file name “<i>bot.js</i>” and put the following code:
 
-<p ><b>Set Up for Facebook chatbot</b></p>
+						<pre><code>
+						'use strict'
+						const botBuilder = require('claudia-bot-builder')
+						const api = botBuilder(() => {
+							// this is message you receive when you send a message from your messenger app
+							return `Hello from Pizzeria Chat-bot!`
+						},{
+							// platform section restrict to generate the API path for “Facebook” only
+							// because Claudia also support other messaging sites like Twilio, skype, telegram, Viber
+							platforms: ['facebook']
+						}
+						)
+						module.exports = api
+						</pre></code>
 
-<p >We need a <i>Facebook application</i> that will link with your <i>Facebook page</i> which acts as a frontend of your messaging and all the heavy lifting of integration is done through the Facebook Application.</p>
+						&nbsp;
 
-<p >Facebook Application for chat-bot isn’t</span> independent, like games developed on Facebook. There has to</span> be some front-end page that our application will latch him to do what it is meant to more like symbiote.</p>
+						<b>Set Up for Facebook Messenger Setup:</b>
 
-<p ><o:p>&nbsp;</o:p></p>
+						We now need to create 
 
-<p ><b>Steps for creating a Facebook Chatbot</b></p>
+						<span>1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Facebook page
 
-<p><span>1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> Setup a Facebook page.</p>
+						<span>2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Facebook app
 
-<p><span>2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Create a Facebook application that will serve your chatbot and connect it to Facebook page.</p>
+						&nbsp;
+						<b>Creating the Facebook Page :</b>
+						To create a Facebook page visit <ahref="https://www.facebook.com/pages/creation">https://www.facebook.com/pages/creation</a>
 
-<p><span>3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Implement your chatbot and deploy it. BackEnd – require AWS lambda[language - node.js], API Gateway. </p>
 
-<p><span>4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Connect your backend chatbot app to your Facebook application.</p>
+						Create page looks like the below snap, use your imagination for filling up ”page name and description” and for category select ”App Page”
 
-<p>&nbsp;</p>
+						<p class=MsoNormal><img src="pizzeria-chatbot_files/image007.png" class="image featured">
 
-<p>We will be using the Claudia Bot Builder to interact with Facebook API’s for chatbot as it abstracts away the various messaging platform APIs and provides a simple, unified API for building you chatbots</p>
+						&nbsp;
+						<b>Creating Facebook Application:</b>
 
-<p>&nbsp;</p>
+						The next step is to create the Facebook Application, to do so visit <a href="https://developers.facebook.com/apps/">https://developers.facebook.com/apps/</a> and select the “Create App”
 
-<p class=MsoNormal><img src="pizzeria-chatbot_files/image001.jpg" class="image featured"></p>
+						<p class=MsoNormal><img src="pizzeria-chatbot_files/image008.png" class="image featured">
 
-<p>&nbsp;</p>
+						At the time of writing this post page look like this, it may be different for you since Facebook folks keep pushing the UI changes.
 
-<p><b>Setting up the Claudia Bot Builder in local.<o:p></o:p></b></p>
+						Once you click on the “<i>Create App</i>” it will ask you a set of questions based on your app 
 
-<p>Create a new folder named <i>facebook-chatbot”</i> and initialize you NPM project and create the entry point to bot.js <i>this</i></span><i> is the entry point for your application </i></p>
+						<span>1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>What do you need your app to do? <i>Select Manage Business Integration</i>
 
-<p><code>mkdir facebook-chatbot</code></p>
+						<span>2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>App Display Name: <i>pizzeria-ChatBot</i>
 
-<p><code>npm init</code></p>
-<p>&nbsp;</p>
+						<span>3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>App Contact Email: <i>&lt;your email id&gt;</i>
 
-<p><b>Installing Claudia:</b></p>
+						<span>4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>App Purpose: <i>Yourself or Your own business</i>
 
-<p>To install Claudia and make the Claudia command available in your terminal run the following command:</p>
+						&nbsp;
+						After submitting the above questions you will land on the Dashboard of your app which will have your App ID displayed on the top right corner.
 
-<p><code>npm install claudia -g</code></p>
+						&nbsp;
 
-<p>&nbsp;</p>
+						<p class=MsoNormal><img src="pizzeria-chatbot_files/image009.png" class="image featured">
 
-<p>For installing run Claudia Bot Builder as a project dependency</p>
+						Next, we add a product to our app which will be “Messenger” click on the Set-Up
 
-<p><code>install claudia-bot-builder –save</code></p>
+						Now don't</span> close this page as we need to add some configuration which we generated from the backend 
 
-<p>&nbsp;</p>
+						<o:p>&nbsp;</o:p>
 
-<p>Inside your project folder <i>facebook</i></span><i>-chatbot</i>”create a file name “<i>bot.js</i>” and put the following code:</p>
+						Switch back to your terminal window and navigate to your project folder ”<span class=SpellE><i>facebook</i></span></span><i>-chat-bot</i>” we created above, and run the below command
 
-<p><pre><code>
-'use strict'
-const botBuilder = require('claudia-bot-builder')
-const api = botBuilder(() => {
-    // this is message you receive when you send a message from your messenger app
-    return `Hello from Pizzeria Chat-bot!`
-},{
-     // platform section restrict to generate the API path for “Facebook” only
-     // because Claudia also support other messaging sites like Twilio, skype, telegram, Viber
-	 platforms: ['facebook']
-}
-)
-module.exports = api
-</pre></code></p>
+						<code>claudia create --region us-east-1 --<span class=SpellE>api</span>-module bot --configure-fb-bot</code>
 
-<p>&nbsp;</p>
+						&nbsp;
 
-<p><b>Set Up for Facebook Messenger Setup:</b></p>
+						It will take some time for Claudia to set up the thing like API Gateway, AWS Lambda, and IAM permission in the cloud.
+						After your code is deployed to an AWS Lambda function the command will generate and print the “<i>webhook URL</i>” and “<i>verify token</i>” which you’ll</span> need to configure your chatbot application.
 
-<p>We now need to create </p>
+						Keep the terminal open, because the process is not completed yet.
+						<p class=MsoNormal><img src="pizzeria-chatbot_files/image010.png" class="image featured">
+						Go back to the Messenger platform setting in your browser and fill out the webhook URL and verify the token
 
-<p><span>1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Facebook page</p>
+						The Webhook section should look like the below image.
+						<p class=MsoNormal><img src="pizzeria-chatbot_files/image011.png" class="image featured">
 
-<p><span>2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Facebook app</p>
 
-<p>&nbsp;</p>
-<p><b>Creating the Facebook Page :</b></p>
-<p>To create a Facebook page visit <ahref="https://www.facebook.com/pages/creation">https://www.facebook.com/pages/creation</a></p>
+						Now under the Webhooks section of the messenger setting and select <i>“messages”</i> and <i>“messaging_postbacks”</i><i></i> in the subscription field.
 
+						I didn't explore more about this webhooks but what I understand is that these events were responsible for capturing the message typed in the messenger app, later which is used in the development of the business logic of the ordering system
+						<p class=MsoNormal><img src="pizzeria-chatbot_files/image012.png" class="image featured">
 
-<p>Create page looks like the below snap, use your imagination for filling up ”page name and description” and for category select ”App Page”</p>
+						The next step is to get your Facebook page access token. To do so, go to the <b>Access Token </b>of the Messenger Product and select the Facebook page you created earlier from the dropdown menu, and click the “<i>Generate Token</i>” and press enter
 
-<p class=MsoNormal><img src="pizzeria-chatbot_files/image007.png" class="image featured"></p>
 
-<p>&nbsp;</p>
-<p><b>Creating Facebook Application:</b></p>
+						<p class=MsoNormal><img src="pizzeria-chatbot_files/image013.png" class="image featured">
 
-<p>The next step is to create the Facebook Application, to do so visit <a href="https://developers.facebook.com/apps/">https://developers.facebook.com/apps/</a> and select the “Create App”</p>
+						The terminal would again ask you for <b>App secret</b> which can be found under the Application&gt; Setting &gt; Basic as shown in the above image.
+						&nbsp;
 
-<p class=MsoNormal><img src="pizzeria-chatbot_files/image008.png" class="image featured"></p>
+						<p class=MsoNormal><img src="pizzeria-chatbot_files/image014.png" class="image featured">
 
-<p>At the time of writing this post page look like this, it may be different for you since Facebook folks keep pushing the UI changes.</p>
+						&nbsp;
 
-<p>Once you click on the “<i>Create App</i>” it will ask you a set of questions based on your app </p>
+						<b>Claudia BUG fix for Facebook API</b>
 
-<p><span>1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>What do you need your app to do? <i>Select Manage Business Integration</i></p>
+						There is an issue with the Claudia bot Builder
+						library file for Facebook due to a recent change in the Facebook Messenger API
+						4.0
 
-<p><span>2.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>App Display Name: <i>pizzeria-ChatBot</i></p>
+						You need to do some changes in the Claudia bot builder <i>&lt;</i><i>project folder&gt;/node_module/Claudia-bot-builder/facebook/lib/script.js</i> file to make it work 
 
-<p><span>3.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>App Contact Email: <i>&lt;your email id&gt;</i></p>
+						<code>
+						.then(() => rp.post(`https://graph.facebook.com/v2.6/me/subscribed_apps?access_token=${pageAccessToken}`)); 
+						to</br>
+						.then(() => rp.post(`https://graph.facebook.com/v5.0/<page_id>/subscribed_apps?subscribed_fields=['messages','messaging_postbacks']&access_token=${pageAccessToken}`));
+						</code>
 
-<p><span>4.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>App Purpose: <i>Yourself or Your own business</i></p>
+						&nbsp;
 
-<p>&nbsp;</p>
-<p>After submitting the above questions you will land on the Dashboard of your app which will have your App ID displayed on the top right corner.</p>
+						use your "<i>page_id</i>" in the changed link, otherwise, you may get this error below
 
-<p>&nbsp;</p>
+						<code>
+						'{"error":{"message":"(#100) The parameter subscribed_fields is required.","type":"OAuthException","code":100,"fbtrace_id":"ALPik4Tqu6m133ZMGhUG8ZC"}}',
+						</code>
+						<o:p>&nbsp;</o:p>
 
-<p class=MsoNormal><img src="pizzeria-chatbot_files/image009.png" class="image featured"></p>
+						You can read more about this issue in the below post
 
-<p>Next, we add a product to our app which will be “Messenger” click on the Set-Up</p>
+						<ahref="https://github.com/claudiajs/claudia-bot-builder/pull/133">https://github.com/claudiajs/claudia-bot-builder/pull/133</a>
 
-<p>Now don't</span> close this page as we need to add some configuration which we generated from the backend </p>
+						<ahref="https://stackoverflow.com/questions/53778224/how-to-solve-the-parameter-subscribed-fields-is-required-error-while-subscribi">https://stackoverflow.com/questions/53778224/how-to-solve-the-parameter-subscribed-fields-is-required-error-while-subscribi</a>
 
-<p><o:p>&nbsp;</o:p></p>
+						&nbsp;
 
-<p>Switch back to your terminal window and navigate to your project folder ”<span class=SpellE><i>facebook</i></span></span><i>-chat-bot</i>” we created above, and run the below command</p>
+						<p class=MsoNormal><img src="pizzeria-chatbot_files/image013.png" class="image featured">
 
-<p><code>claudia create --region us-east-1 --<span class=SpellE>api</span>-module bot --configure-fb-bot</code></p>
 
-<p>&nbsp;</p>
+						If you run into the issue even after changing the above code, you need to install <code>npm package “patch-package” </code> add it to the dependencies of your project in the package.json file this will force Claudia to use the new modified <i>&lt;Yourfolder&gt;/node_module</span>/Claudia-bot-builder/facebook/lib/script.js</i> file for building our infrastructure for the chat-bot.
 
-<p>It will take some time for Claudia to set up the thing like API Gateway, AWS Lambda, and IAM permission in the cloud.</p>
-<p>After your code is deployed to an AWS Lambda function the command will generate and print the “<i>webhook URL</i>” and “<i>verify token</i>” which you’ll</span> need to configure your chatbot application.</p>
 
-<p>Keep the terminal open, because the process is not completed yet.</p>
-<p class=MsoNormal><img src="pizzeria-chatbot_files/image010.png" class="image featured"></p>
-<p>Go back to the Messenger platform setting in your browser and fill out the webhook URL and verify the token</p>
+						After fixing this you may need to clean up the resource created by the previous instance run like remove the API gateway, lambda function, and the IAM role created by Claudia and run the above command again 
 
-<p>The Webhook section should look like the below image.</p>
-<p class=MsoNormal><img src="pizzeria-chatbot_files/image011.png" class="image featured"></p>
+						<code>claudia create --region us-east-1 --api-module bot --configure-fb-bot</code>
 
+						Put in the Webhook URL and Token from the terminal to your Facebook application and the “<i>Facebook page access token</i>” can be generated in the “Access Token” section on your application page.
 
-<p>Now under the Webhooks section of the messenger setting and select <i>“messages”</i> and <i>“messaging_postbacks”</i><i></i> in the subscription field.</p>
+						After that terminal will ask for “App secret” which can be found under the “Setting -&gt; Basic” and process is the same. 
 
-<p>I didn't explore more about this webhooks but what I understand is that these events were responsible for capturing the message typed in the messenger app, later which is used in the development of the business logic of the ordering system</p>
-<p class=MsoNormal><img src="pizzeria-chatbot_files/image012.png" class="image featured"></p>
+						Once done terminal will output the following 
+						<pre><code>
+						"lambda": {
+							"role": "facebook-chatbot-executor",
+							"name": "chat-bot",
+							"region": "us-east-1"
+						},
+						"api": {
+							"id": "wvztkdiz8c",
+							"module": "bot",
+							"url": "https://api_gateway_id.execute-api.eu-central-1.amazonaws.com/
+							latest",
+								"deploy": {
+								"facebook": "https://api_gateway_id.execute-api.eu-central-1.amazonaws.com/latest/facebook",
+								}
+							}
+						}
 
-<p>The next step is to get your Facebook page access token. To do so, go to the <b>Access Token </b>of the Messenger Product and select the Facebook page you created earlier from the dropdown menu, and click the “<i>Generate Token</i>” and press enter</p>
+						</code></pre>
+						&nbsp;
 
+						Now our chatbot is all set.
 
-<p class=MsoNormal><img src="pizzeria-chatbot_files/image013.png" class="image featured"></p>
+						Open your messenger app and try messaging your Facebook page profile like “<i>hi</i>” or “<i>hello</i>” anything you want you will get the response from the bot.js return function <code>“Hello from Pizzeria Chat-bot!”</code>
 
-<p>The terminal would again ask you for <b>App secret</b> which can be found under the Application&gt; Setting &gt; Basic as shown in the above image.</p>
-<p>&nbsp;</p>
+						<p class=MsoNormal><img src="pizzeria-chatbot_files/fb_messenger_demo.gif" >
 
-<p class=MsoNormal><img src="pizzeria-chatbot_files/image014.png" class="image featured"></p>
+						Now, this chatbot can be expanded to handle the whole ordering system which you can see in the below GIF, i'll be uploading the code in my git hub account soon for the below MVP chat-bot ordering system.
 
-<p>&nbsp;</p>
+						<p class=MsoNormal><img src="pizzeria-chatbot_files/fb_messenger_mvp.gif" >
 
-<p><b>Claudia BUG fix for Facebook API</b></p>
 
-<p>There is an issue with the Claudia bot Builder
-library file for Facebook due to a recent change in the Facebook Messenger API
-4.0</p>
-
-<p>You need to do some changes in the Claudia bot builder <i>&lt;</i><i>project folder&gt;/node_module/Claudia-bot-builder/facebook/lib/script.js</i> file to make it work </p>
-
-<code>
-.then(() => rp.post(`https://graph.facebook.com/v2.6/me/subscribed_apps?access_token=${pageAccessToken}`)); 
- to</br>
-.then(() => rp.post(`https://graph.facebook.com/v5.0/<page_id>/subscribed_apps?subscribed_fields=['messages','messaging_postbacks']&access_token=${pageAccessToken}`));
-</code>
-
-<p>&nbsp;</p>
-
-<p>use your "<i>page_id</i>" in the changed link, otherwise, you may get this error below</p>
-
-<code>
-'{"error":{"message":"(#100) The parameter subscribed_fields is required.","type":"OAuthException","code":100,"fbtrace_id":"ALPik4Tqu6m133ZMGhUG8ZC"}}',
-</code>
-<p><o:p>&nbsp;</o:p></p>
-
-<p>You can read more about this issue in the below post</p>
-
-<p><ahref="https://github.com/claudiajs/claudia-bot-builder/pull/133">https://github.com/claudiajs/claudia-bot-builder/pull/133</a></p>
-
-<p><ahref="https://stackoverflow.com/questions/53778224/how-to-solve-the-parameter-subscribed-fields-is-required-error-while-subscribi">https://stackoverflow.com/questions/53778224/how-to-solve-the-parameter-subscribed-fields-is-required-error-while-subscribi</a></p>
-
-<p>&nbsp;</p>
-
-<p class=MsoNormal><img src="pizzeria-chatbot_files/image013.png" class="image featured"></p>
-
-
-<p>If you run into the issue even after changing the above code, you need to install <code>npm package “patch-package” </code> add it to the dependencies of your project in the package.json file this will force Claudia to use the new modified <i>&lt;Yourfolder&gt;/node_module</span>/Claudia-bot-builder/facebook/lib/script.js</i> file for building our infrastructure for the chat-bot.</p>
-
-
-<p>After fixing this you may need to clean up the resource created by the previous instance run like remove the API gateway, lambda function, and the IAM role created by Claudia and run the above command again </p>
-
-<p><code>claudia create --region us-east-1 --api-module bot --configure-fb-bot</code></p>
-
-<p>Put in the Webhook URL and Token from the terminal to your Facebook application and the “<i>Facebook page access token</i>” can be generated in the “Access Token” section on your application page.</p>
-
-<p>After that terminal will ask for “App secret” which can be found under the “Setting -&gt; Basic” and process is the same. </p>
-
-<p>Once done terminal will output the following </p>
-<p><pre><code>
-"lambda": {
-	"role": "facebook-chatbot-executor",
-	"name": "chat-bot",
-	"region": "us-east-1"
-},
-"api": {
-	"id": "wvztkdiz8c",
-	"module": "bot",
-	"url": "https://api_gateway_id.execute-api.eu-central-1.amazonaws.com/
-	latest",
-		"deploy": {
-		"facebook": "https://api_gateway_id.execute-api.eu-central-1.amazonaws.com/latest/facebook",
-		}
-    }
-}
-
-</code></pre></p>
-<p>&nbsp;</p>
-
-<p>Now our chatbot is all set.</p>
-
-<p>Open your messenger app and try messaging your Facebook page profile like “<i>hi</i>” or “<i>hello</i>” anything you want you will get the response from the bot.js return function <code>“Hello from Pizzeria Chat-bot!”</code></p>
-
-<p class=MsoNormal><img src="pizzeria-chatbot_files/fb_messenger_demo.gif" ></p>
-
-<p>Now, this chatbot can be expanded to handle the whole ordering system which you can see in the below GIF, i'll be uploading the code in my git hub account soon for the below MVP chat-bot ordering system.</p>
-
-<p class=MsoNormal><img src="pizzeria-chatbot_files/fb_messenger_mvp.gif" ></p>
-
-
-<p>&nbsp;</p>
+&nbsp;
 				</article>
 </div>
 </div>
@@ -315,7 +292,7 @@ library file for Facebook due to a recent change in the Facebook Messenger API
 					<header>
 						<h3>Diving in the abyss of serverless. </h3>
 					</header>
-					<p font-weight="700">Hi this is Ruben Rao. Its my first attempt to develop any project completely on the serverless services. This website demonstrates all my project behind the scenes, that I’ve completed to explore and learn serverless services</p>
+					<p font-weight="700">Hi this is Ruben Rao. Its my first attempt to develop any project completely on the serverless services. This website demonstrates all my project behind the scenes, that I’ve completed to explore and learn serverless services
 					<ul class="icons">
 						<li><a href="https://twitter.com/ruben_rao10" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
 						<li><a href="https://www.facebook.com/ruben.rao.75" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
