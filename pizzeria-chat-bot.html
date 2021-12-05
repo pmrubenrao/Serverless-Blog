@@ -58,7 +58,7 @@
 						<ol>
 							<li>Setup a Facebook page.</li>
 							<li>Create a Facebook application that will serve your chatbot and connect it to Facebook page.</li>
-							<li>Implement your chatbot and deploy it. BackEnd – require AWS lambda[language - node.js], API Gateway. </li>
+							<li>Implement your chatbot and deploy it. BackEnd – require AWS lambda, API Gateway. </li>
 							<li>Connect your backend chatbot app to your Facebook application.</li>
 						</ol>
 						<br/>
@@ -66,14 +66,15 @@
 						<br/>
 						<br/>
 						<img src="pizzeria-chatbot_files/image001.jpg" class="image featured">
-						<br/>
-						<br/>
 						<b>Setting up the Claudia Bot Builder in local.</b>
 						<br/>
-						Create a new folder named <i>facebook-chatbot”</i> and initialize you NPM project and create the entry point to bot.js <i>this</i></span><i> is the entry point for your application </i>
+						Create a new folder named <i>facebook-chatbot”</i> and initialize you NPM project and create the entry point to bot.js, this is the entry point for your application
 						<br/>
 						<br/>
 						<code>mkdir facebook-chatbot</code>
+						<br/>
+						<br/>
+						<code>cd facebook-chatbot</code>
 						<br/>
 						<br/>
 						<code>npm init</code>
@@ -81,13 +82,13 @@
 						<br/>
 						<b>Installing Claudia:</b>
 						<br/>
-						To install Claudia and make the Claudia command available in your terminal run the following command:
+						To install Claudia and to be able to use the Claudia command in your terminal run the following command:
 						<br/>
 						<br/>
 						<code>npm install claudia -g</code>
 						<br/>
 						<br/>
-						For installing run Claudia Bot Builder as a project dependency
+						Add Claudia Bot Builder as a project dependency
 						<br/>
 						<br/>
 						<code>install claudia-bot-builder –save</code>
@@ -99,17 +100,16 @@
 						<script src="https://gist.github.com/pmrubenrao/f3fb70d18f2443235cf1af70ce013de4.js"></script>
 						<br/>
 						<br/>
-
 						<b>Set Up for Facebook Messenger Setup:</b>
 						<br/>
-						We now need to create 
+						We now need to 
 						<br/>
 						<ol>
-							<li>Facebook page</li>
-							<li>Facebook app</li>
+							<li>Create Facebook page</li>
+							<li>Create Facebook app</li>
 						</ol>
 						<br/>
-						Creating the Facebook Page:
+						Creating Facebook Page:
 						<br/>
 						To create a Facebook page visit <a href="https://www.facebook.com/pages/creation">Facebook Page Creation</a>
 						<br/>
@@ -191,7 +191,7 @@
 						<br/>
 
 						<b>Claudia BUG fix for Facebook API</b>
-
+						<br/>
 						There is an issue with the Claudia bot Builder
 						library file for Facebook due to a recent change in the Facebook Messenger API
 						4.0
