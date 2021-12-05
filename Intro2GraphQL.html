@@ -18,191 +18,143 @@
 	</head>
 	<body class="no-sidebar is-preload">
 		<div id="page-wrapper">
-
-			<!-- Header
-				<div id="header">
-					<div class="inner">
-						<header>
-							<h1><a href="index.html" id="logo">A SERVELESS PROJECT</a></h1>
-						</header>
-					</div>
-				</div>
-	-->
 			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-
 			<link rel="stylesheet" href="assets/css/style.css">
-	
 			<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-
 			<script src="assets/js/index.js"></script>
-			
-			
-<div class="wrapper style1">
-
-<div class="container">
-<article id="main" class="special">
-<header>
-	<h2><a href="#">Introduction to GraphQL</a></h2>
-</header>
-
-
-<p>
-	Let’s have a look at <b>what GraphQL is</b>, <b>what a GraphQL API consists of</b>, and <b>how GraphQL works ?</b>
-</p>
-<p><i><b>What Is GraphQL?</b></i></p>
-<p>
-	GraphQL is an API specification. It is a query language for APIs and a runtime for fulfilling those queries with your data. It is, and can be used as, a replacement for REST and has some similarities to REST.
-</p>
-<p>
-	GraphQL was introduced by Facebook in 2015, though it had been used internally. Since 2012. GraphQL allows clients to define the structure of the data that is required from an API call so that they can know exactly what data structure is going to be returned from the server. Requesting data in this way enables a much more efficient way for client-side applications to interact with backend APIs and services, reducing the amount of under-fetching of data, preventing the over-fetching of data, and preventing type errors.
-</p>	
-	<p><i><b>What Makes Up a GraphQL API?</b></i></p>
-<p>
-	A GraphQL API consists of three main parts: <i><b>schema, resolvers, and data sources,</b></i> as illustrated in Figure.
-</p>
-	 <a href="#" class="image featured"><img src="images/GraphQL-APIDesign-1.jpg" alt="" /></a>
-	<p><i>Figure GraphQL API Design</i></p>
-	
-<p>
-	The schema, written in GraphQL Schema Definition Language (SDL), defines the data model (types) and operations that can be executed against the API. The schema consists of base types (data models) and GraphQL operations like queries for fetching data; mutations for creating, updating, and deleting data; and subscriptions for subscribing to changes in data in real time. Here is an example of a GraphQL schema:
-</p>
-
-<a href="#" class="image featured"><img src="images/GraphQL-APIDesign-2.jpg" alt="" /></a>
-
-<p><pre><code>
-# base type
-type Todo {
- id: ID
- name: String
- completed: Boolean
-}
-
-# Query definitions
-type Query {
- getTodo(id: ID): Todo
- listTodos: [Todo]
-}
-
-# Mutation definitions
-type Mutation {
- createTodo(input: Todo): Todo
-}
- 
-# Subscription definitions
-type Subscription {
- onCreateTodo: Todo
-}
-</pre></code></p>
-			
-<p>
-	Once the schema has been created, you can begin writing resolvers for the GraphQL operations defined in the schema (query, mutation, subscription). GraphQL resolvers tell the GraphQL operations what to do when being executed and will typically interact with some data source or another API, as shown below.
-</p>
-
-<p><b>GraphQL Operations:</b></p>
-<p>
-	GraphQL operations are how you interact with the API data sources. GraphQL operation can be similarly mapped to HTTP methods for RESTful APIs:
-	<p><b>•</b><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>GET -> Query</span></p>
-	<p><b>•</b><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>PUT -> Mutation</span></p>
-	<p><b>•</b><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>POST -> Mutation</span></p>
-	<p><b>•</b><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>DELETE -> Mutation</span></p>
-	<p><b>•</b><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>PATCH -> Mutation</span></p>
-		
-<p>
-	A GraphQL request operation looks like a JavaScript object with only the keys and no values. The keys and values are returned in the GraphQL operation response. 
-</p>
-
-</p>Here is an example of a typical GraphQL query fetching an array of items:</p>
-<p><pre><code>
-query {
- listTodos {	
-  id 
-   name
-   completed
- }
-}
-</pre></code></p>
-<i>This request would return the following <b>response</b>:</i>
-<p><pre><code>
-"data": {
- "listTodos": [
-   { "id": "0", "name": "buy groceries", "completed": false },
-   { "id": "1", "name": "exercise", "completed": true }
-  ]
-}
-</pre></code></p>
-<i>You can also pass arguments into a GraphQL operation. The following operation is a
-query for a Todo, passing in the ID of the Todo you would like to fetch:</i>
-<p><pre><code>
-query{
- getTodo(id: "0") {
-  name
-  completed
- }
-}
-</pre></code></p>
-
-<i>This request would return the following <b>response:</b></i>
-
-<p><pre><code>
-"data": {
- "getTodo": {
-   "name": "buy groceries"
-   "completed": false
-  }
-}
-</pre></code></p>
-	<p>Though there are many ways to implement a GraphQL server but, AppSync is a managed service that allows us to deploy a GraphQL API, resolvers, and data sources quickly and easily using the Amplify CLI.</p>
-</p>
-	</article>
-</div>
-</div>
-
-<!-- Footer -->
-<div id="footer">
-	<div class="container">
-
-
-		<div class="row">
-			<div class="col-12">
-
-				<!-- Contact -->
-				<section class="contact">
+			<div class="wrapper style1">
+				<div class="container">
+				<article id="main" class="special">
 					<header>
-						<h3>Diving in the abyss of serverless. </h3>
-					</header>
-					<p font-weight="700">Hi this is Ruben Rao. Its my first attempt to develop any project completely on the serverless services. This website demonstrates all my project behind the scenes, that I’ve completed to explore and learn serverless services</p>
-					<ul class="icons">
-						<li><a href="https://twitter.com/ruben_rao10" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-						<li><a href="https://www.facebook.com/ruben.rao.75" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-						<li><a href="https://www.instagram.com/ruben_rao/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+						<h2><a href="#">Introduction to GraphQL</a></h2>
+						</header>
+						
+						Let’s try to answer below question <br/><br>
+						what GraphQL is?
+						<br/>
+						what a GraphQL API consists of
+						<br/>
+						how GraphQL works?
+						<br/><br/>
+						
+						<b>What Is GraphQL?</b>
+						<br/><br/>
+							GraphQL is an API specification. It is a query language for APIs and a runtime for fulfilling those queries with your data. It is, and can be used as, a replacement for REST and has some similarities to REST.
+							<br/><br/>
+							GraphQL was introduced by Facebook in 2015, though it had been used internally. Since 2012. 
+							<br/><br/>
+							GraphQL allows clients to define the structure of the data that is required from an API call so that they can know exactly what data structure is going to be returned from the server. 
+							<br/>
+							<br/>
+							Requesting data in this way enables a much more efficient way for client-side applications to interact with backend APIs and services, reducing the amount of under-fetching of data, preventing the over-fetching of data, and preventing type errors.
+							<br/><br/><br/>
+					
+						<b>What Makes Up a GraphQL API?</b>
+						<br/><br/>
+							A GraphQL API consists of three main parts: <i><b>schema, resolvers, and data sources,</b></i> as illustrated in Figure.
+							<br/>
+							<a href="#" class="image featured"><img src="images/GraphQL-APIDesign-1.jpg" alt="" /></a>
+							<i>Figure GraphQL API Design</i>
+							<br/><br/><br/>
+							The schema, written in GraphQL Schema Definition Language (SDL), defines the data model (types) and operations that can be executed against the API.
+							<br/><br/>
+							The schema consists of base types (data models) and GraphQL operations like queries for fetching data; mutations for creating, updating, and deleting data; and subscriptions for subscribing to changes in data in real time. 
+							<br/><br/>
+							Here is an example of a GraphQL schema:
+						<a href="#" class="image featured"><img src="images/GraphQL-APIDesign-2.jpg" alt="" /></a>
 
-					</ul>
-				</section>
+						<script src="https://gist.github.com/pmrubenrao/801d7655aab9edf7cc1509298dd3589c.js"></script>
+									
+						<br/><br/>
+							Once the schema has been created, you can begin writing resolvers for the GraphQL operations defined in the schema (query, mutation, subscription). 
+							<br/><br/>
+							GraphQL resolvers tell the GraphQL operations what to do when being executed and will typically interact with some data source or another API, as shown below.
 
-				<!-- Copyright -->
-				<div class="copyright">
-					<ul class="menu">
-						<li>Managed by Ruben Rao.</li>
-						<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-					</ul>
+							<br/><br/><br/>
+						<b>GraphQL Operations:</b>
+						<br/><br/>
+							<ul>
+								<li>GET -> Quer</li><br/>
+								<li>PUT -> Mutation</li><br/>
+								<li>PATCH -> Mutation</li><br/>
+								<li>POST -> Mutation</li><br/>
+								<li>DELETE -> Mutation</li><br/>
+							</ul>
+						<br/>
+						GraphQL operations are how you interact with the API data sources. GraphQL operation can be similarly mapped to HTTP methods for RESTful APIs:
+						<br/><br/>
+						A GraphQL request operation looks like a JavaScript object with only the keys and no values. The keys and values are returned in the GraphQL operation response. 
+
+						<br/><br/>
+						Here is an example of a typical GraphQL <b>Query</b> fetching an array of items:
+						
+						<br/><br/>
+						<script src="https://gist.github.com/pmrubenrao/4416bbde66797d8c9160a1c393268fb0.js"></script>
+						<br/><br/>
+						
+						This request would return the following <b>Response</b>:
+						
+						<br/><br/>
+						<script src="https://gist.github.com/pmrubenrao/6fbeacbf50ea8a118fcdbf163129a68f.js"></script>
+						<br/><br/>
+						
+						You can also pass arguments into a GraphQL operation. The following operation is a
+						query for a Todo, passing in the ID of the Todo you would like to fetch:
+						<br/><br/>
+						<script src="https://gist.github.com/pmrubenrao/9c0200f6c15a01bcd78fb39ad9060e3d.js"></script>
+						<br/><br/>
+
+						This request would return the following <b>response:</b>
+
+						<br/><br/>
+							<script src="https://gist.github.com/pmrubenrao/b51d1d2760fab7730b0732adb9812391.js"></script>
+						<br/><br/>
+						
+						Though there are many ways to implement a GraphQL server but, AppSync is a managed service that allows us to deploy a GraphQL API, resolvers, and data sources quickly and easily using the Amplify CLI.
+
+					</article>
 				</div>
-
 			</div>
 
-		</div>
-	</div>
-</div>
+<!-- Footer -->
+			<div id="footer">
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+							<!-- Contact -->
+							<section class="contact">
+								<header>
+									<h3>Diving in the abyss of serverless. </h3>
+								</header>
+								<p font-weight="700">Hi this is Ruben Rao. Its my first attempt to develop any project completely on the serverless services. This website demonstrates all my project behind the scenes, that I’ve completed to explore and learn serverless services
+								<ul class="icons">
+									<li><a href="https://twitter.com/ruben_rao10" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="https://www.facebook.com/ruben.rao.75" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+									<li><a href="https://www.instagram.com/ruben_rao/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+								</ul>
+							</section>
+							<!-- Copyright -->
+							<div class="copyright">
+								<ul class="menu">
+									<li>Managed by Ruben Rao.</li>
+									<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 
 
-<!-- Scripts -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/jquery.dropotron.min.js"></script>
-<script src="assets/js/jquery.scrolly.min.js"></script>
-<script src="assets/js/jquery.scrollex.min.js"></script>
-<script src="assets/js/browser.min.js"></script>
-<script src="assets/js/breakpoints.min.js"></script>
-<script src="assets/js/util.js"></script>
-<script src="assets/js/main.js"></script>
+			<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
 
-</body>
+	</body>
 </html>

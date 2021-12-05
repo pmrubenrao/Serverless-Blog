@@ -47,10 +47,10 @@
 					Now, this pizzeria app has multiple channels which are completely separated from each other to order/cancel/payment and all the basic service that online pizza ordering system has  for Aunt Maria's Pizeeria shop.
 					<br/><br/>
 					<ol>
-						<li>Web channel </li>
-						<li>Facebook chatbot</li>
-						<li>SMS chatbot</li>
-						<li>Payment channel</li>
+						<li>Web channel </li><br/>
+						<li>Facebook chatbot</li><br/>
+						<li>SMS chatbot</li><br/>
+						<li>Payment channel</li><br/>
 					</ol>
 
 					<img src="pizzeria_files/image001.jpg" class="image featured">
@@ -81,21 +81,21 @@
 					<br/>
 					<p>Services, Framework, and language used:</p>
 					<ol>
-						<li>AWS Lambda</li>
-						<li>AWS API Gateway</li>
-						<li>Claudia API builder framework</li>
-						<li>Node.js</li>
-						<li>AWS Dynamo DB</li>
+						<li>AWS Lambda</li><br/>
+						<li>AWS API Gateway</li><br/>
+						<li>Claudia API builder framework</li><br/>
+						<li>Node.js</li><br/>
+						<li>AWS Dynamo DB</li><br/>
 					</ol>
 					<br/>
 					<p>Let start with the Web Channel </p>
 					<p>A normal order request contains the following </p>
 
 					<ul>
-						<li><b>Get Order</b> – This event will trigger when a user try to find the available pizza from the user interface.</li>
-						<li><b>Create Order</b> – Event when the user made a request for a particular pizza, which then will be saved to the storage DB.</li>
-						<li><b>Update Order</b> – Though update order includes several other things an order can have but for simplicity we only using the <i>update order</i> for changing the state of the order for example  changing the order state from <i>pending</i> to <i>in-progress</i> and finally <i>delivered.</i></li>
-						<li><b>Delete Order or Cancel Order</b> – When user wins over his craving and decides eat salad instead.</li>
+						<li><b>Get Order</b> – This event will trigger when a user try to find the available pizza from the user interface.</li><br/>
+						<li><b>Create Order</b> – Event when the user made a request for a particular pizza, which then will be saved to the storage DB.</li><br/>
+						<li><b>Update Order</b> – Though update order includes several other things an order can have but for simplicity we only using the <i>update order</i> for changing the state of the order for example  changing the order state from <i>pending</i> to <i>in-progress</i> and finally <i>delivered.</i></li><br/>
+						<li><b>Delete Order or Cancel Order</b> – When user wins over his craving and decides eat salad instead.</li><br/>
 					</ul>
 					
 					Every path you see in the below figure is the separate path that was created by the Claudia API Builder to serve the request from the user and send/receive the feed/response from their correspoing the lambda function, which them server back to the user accordingly
@@ -103,11 +103,11 @@
 					<img src="pizzeria_files/image002.jpg" class="image featured">
 
 					<ol>
-						<li>The user sends the request from a mobile or web application that will be transmitted to backend logic through the API Gateway.</li>
-						<li>Since we are processing all the functions in the same lambda function we need to do internal routing to find action(GET/POST/PUT/DELETE) should trigger the proper handler function(get_orders.js/create-order.js/update-order.js etc).</li>
-						<li>Based on the received request, Claudia API invokes corresponding handlers</li>
-						<li>API Gateway parse the request and send to the corresponding service for example creating new order a <b>POST</b> request sent to the <b>“/orders”</b> path and its corresponding handler create-order.js will get triggered to serve it likewise for retrieving a list of orders a GET request sent to the <b>“/pizzas”</b> path and its corresponding handler <b>get-order.js</b> gets triggered.</li>
-						<li>Once the request is fulfilled by the lambda handler response travel back to the user through Claudia to API Gateway</li>
+						<li>The user sends the request from a mobile or web application that will be transmitted to backend logic through the API Gateway.</li><br/>
+						<li>Since we are processing all the functions in the same lambda function we need to do internal routing to find action(GET/POST/PUT/DELETE) should trigger the proper handler function(get_orders.js/create-order.js/update-order.js etc).</li><br/>
+						<li>Based on the received request, Claudia API invokes corresponding handlers</li><br/>
+						<li>API Gateway parse the request and send to the corresponding service for example creating new order a <b>POST</b> request sent to the <b>“/orders”</b> path and its corresponding handler create-order.js will get triggered to serve it likewise for retrieving a list of orders a GET request sent to the <b>“/pizzas”</b> path and its corresponding handler <b>get-order.js</b> gets triggered.</li><br/>
+						<li>Once the request is fulfilled by the lambda handler response travel back to the user through Claudia to API Gateway</li><br/>
 					</ol>
 					<br/><br/>
 					Every ordering system has to store the order in some location, so that I can be referenced later.
@@ -133,11 +133,11 @@
 					Detailed illustration of the order flow from customers to delivery API.
 					<br/><br/>
 					<ol>
-						<li>The customer requested the Pizza API</li>
-						<li><span style='color:#538135'>A new order request will trigger the <i>create_order</i> function which makes entry to the DynamoDB with the status of order “<i>pending</i>” and trigger the Dummy API “Some Like it Hot Delivery”</span></li>
-						<li><span style='color:#7030A0'>Dummy API will return the response with the delivery id</span></li>
-						<li><span style='color:#538135'>On the above event response, it triggers the <i>update_order</i> function which updates the status of  an order from “<i>pending</i>” to “<i>in-progress</i>” to the Dynamo DB</span></li>
-						<li><span style='color:#7030A0'>After 2 minutes Dummy API again send a response to the Pizza API which mark the order status to “<i>Delivery </i>” </span></li>
+						<li>The customer requested the Pizza API</li><br/>
+						<li><span style='color:#538135'>A new order request will trigger the <i>create_order</i> function which makes entry to the DynamoDB with the status of order “<i>pending</i>” and trigger the Dummy API “Some Like it Hot Delivery”</span></li><br/>
+						<li><span style='color:#7030A0'>Dummy API will return the response with the delivery id</span></li><br/>
+						<li><span style='color:#538135'>On the above event response, it triggers the <i>update_order</i> function which updates the status of  an order from “<i>pending</i>” to “<i>in-progress</i>” to the Dynamo DB</span></li><br/>
+						<li><span style='color:#7030A0'>After 2 minutes Dummy API again send a response to the Pizza API which mark the order status to “<i>Delivery </i>” </span></li><br/>
 					</ol>
 					<img src="pizzeria_files/image005.jpg" class="image featured">
 
