@@ -3010,7 +3010,7 @@ body.homepage.is-preload #header:after {
   /* Wrapper */
 
   .wrapper {
-    padding: 3em 1.5em;
+    padding: 3em 3em;
   }
 
   /* Header */
@@ -3062,7 +3062,7 @@ body.homepage.is-preload #header:after {
   /* Banner */
 
   #banner {
-    padding: 3em 2em 3em 2em;
+    padding: 3em 0em;
   }
 
   /* Sidebar */
