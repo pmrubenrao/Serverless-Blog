@@ -351,24 +351,24 @@ hr:after {
 .container {
   margin: 0 auto;
   max-width: 100%;
-  width: 1400px;
+  width: 900px;
 }
 
 @media screen and (max-width: 1680px) {
   .container {
-    width: 1200px;
+    width: 900px;
   }
 }
 
 @media screen and (max-width: 1280px) {
   .container {
-    width: 100%;
+    width: 900px;
   }
 }
 
 @media screen and (max-width: 960px) {
   .container {
-    width: 100%;
+    width: 900px;
   }
 }
 
