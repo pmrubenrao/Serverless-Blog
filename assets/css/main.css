@@ -2159,6 +2159,19 @@ table.default tfoot {
 }
 
 /* Button */
+/* Arrow Styling */
+button {
+  font-weight: 600 !important;
+  /* border: solid 1px black !important; */
+  outline: 0 !important;
+  padding: 0.5rem 1rem !important;
+  font-size: 0.7rem !important;
+  letter-spacing: 0.08rem !important;
+  /* background-color: rgb(241, 241, 241) !important; */
+  border-radius: 10.35rem !important;
+  position: fixed !important;
+  cursor: pointer !important;
+}
 
 input[type='button'],
 input[type='submit'],
