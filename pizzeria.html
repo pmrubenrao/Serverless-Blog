@@ -13,11 +13,10 @@
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-174482799-2"></script>
 		<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
-
-		gtag('config', 'UA-174482799-2');
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'UA-174482799-2');
 		</script>
 
 	</head>
@@ -26,202 +25,196 @@
 			<!-- Main -->
 			<div class=WordSection1>
 				<div class="wrapper style1">
-				<div class="container">
-				<article id="main" class="special">
-					<a href="./index.html" style="position: fixed;right:92%;top:24%">
-						<img src="./images/back.svg" style="width:2rem;height:2rem" ></a>
-				<header>
-					<h2><a href="#">Pizzeria - now on AIR</a></h2>
-					<p>
-						This is the online pizza ordering portal which utilizes the power of serverless service by AWS.
-					</p>
-				</header>
+					<div class="container">
+						<article id="main" class="special">
+							<a href="./index.html" style="position: fixed;right:92%;top:24%">
+								<img src="./images/back.svg" style="width:2rem;height:2rem" ></a>
+							<header>
+								<h2><a href="#">Pizzeria - now on AIR</a></h2>
+								<p>
+									This is the online pizza ordering portal which utilizes the power of serverless service by AWS.
+								</p>
+							</header>
+							<p>
+								This is the second serverless project that I recreated from another book “Serverless Application with Node.js Using AWS Lambda and Claudia.js” from the author Slobodan Stojanovic and Aleksandar Simovic The book is all about the two projects one of which is to move the Offline business of the Fictitious character Aunt Maria Pizzeria business to online.
+								<br/><br/>
+								It has a very nice and minimal introduction to the Claudia JS framework which encapsulates the configuration and integration of APIGateway and lambda.
+								<br/><br/>
+								Now, this pizzeria app has multiple channels which are completely separated from each other to order/cancel/payment and all the basic service that online pizza ordering system has  for Aunt Maria's Pizeeria shop.
+								<br/><br/>
+								<ol>
+									<li>Web channel </li><br/>
+									<li>Facebook chatbot</li><br/>
+									<li>SMS chatbot</li><br/>
+									<li>Payment channel</li><br/>
+								</ol>
 
-				<p>
-					This is the second serverless project that I recreated from another book “Serverless Application with Node.js Using AWS Lambda and Claudia.js” from the author Slobodan Stojanovic and Aleksandar Simovic The book is all about the two projects one of which is to move the Offline business of the Fictitious character Aunt Maria Pizzeria business to online.
-					<br/><br/>
-					It has a very nice and minimal introduction to the Claudia JS framework which encapsulates the configuration and integration of APIGateway and lambda.
-					<br/><br/>
-					Now, this pizzeria app has multiple channels which are completely separated from each other to order/cancel/payment and all the basic service that online pizza ordering system has  for Aunt Maria's Pizeeria shop.
-					<br/><br/>
-					<ol>
-						<li>Web channel </li><br/>
-						<li>Facebook chatbot</li><br/>
-						<li>SMS chatbot</li><br/>
-						<li>Payment channel</li><br/>
-					</ol>
+								<img src="pizzeria_files/image001.jpg" class="image featured">
+								<br/>
+								All these channels were separated and developed in an
+								isolated environment(lambda functions) and a single API is used to route the
+								request to the targeted function.
+								<br/><br/>
+								This is the same architecture used in the modern-day
+								microservices which removes dependency and load from the system, as compared to
+								the monolithic architecture.
+								<br/><br/>
+								Next section we will explore more about the architecture of
+								the Web, Facebook, and SMS chat boot.
+								<br/><br/>
+								As a Bonus!! This book also expose you to another project
+								where it demonstrates the migration of on-prem Express.js architecture to the serverless,
+								if you know about the lambda function or any other FaaS it is designed to serve
+								as single request at a time and not meant to be used as the webserver but it is
+								possible to serve the express.js web server in the lambda function.
+								<br/><br/>
+								You may think using the lambda as a webserver is like an antipattern
+								design, but they do have a very convincing explanation. Please do look once you
+								have done with the Pizzeria app.
+								<br/><br/>
 
-					<img src="pizzeria_files/image001.jpg" class="image featured">
-					<br/>
-					All these channels were separated and developed in an
-					isolated environment(lambda functions) and a single API is used to route the
-					request to the targeted function.
-					<br/><br/>
-					This is the same architecture used in the modern-day
-					microservices which removes dependency and load from the system, as compared to
-					the monolithic architecture.
-					<br/><br/>
-					Next section we will explore more about the architecture of
-					the Web, Facebook, and SMS chat boot.
-					<br/><br/>
-					As a Bonus!! This book also expose you to another project
-					where it demonstrates the migration of on-prem Express.js architecture to the serverless,
-					if you know about the lambda function or any other FaaS it is designed to serve
-					as single request at a time and not meant to be used as the webserver but it is
-					possible to serve the express.js web server in the lambda function.
-					<br/><br/>
-					You may think using the lambda as a webserver is like an antipattern
-					design, but they do have a very convincing explanation. Please do look once you
-					have done with the Pizzeria app.
-					<br/><br/>
+								<b>WEB CHANNEL</b>
+								<br/>
+								<p>Services, Framework, and language used:</p>
+								<ol>
+									<li>AWS Lambda</li><br/>
+									<li>AWS API Gateway</li><br/>
+									<li>Claudia API builder framework</li><br/>
+									<li>Node.js</li><br/>
+									<li>AWS Dynamo DB</li><br/>
+								</ol>
+								<br/>
+								<p>Let start with the Web Channel </p>
+								<p>A normal order request contains the following </p>
 
-					<b>WEB CHANNEL</b>
-					<br/>
-					<p>Services, Framework, and language used:</p>
-					<ol>
-						<li>AWS Lambda</li><br/>
-						<li>AWS API Gateway</li><br/>
-						<li>Claudia API builder framework</li><br/>
-						<li>Node.js</li><br/>
-						<li>AWS Dynamo DB</li><br/>
-					</ol>
-					<br/>
-					<p>Let start with the Web Channel </p>
-					<p>A normal order request contains the following </p>
+								<ul>
+									<li><b>Get Order</b> – This event will trigger when a user try to find the available pizza from the user interface.</li><br/>
+									<li><b>Create Order</b> – Event when the user made a request for a particular pizza, which then will be saved to the storage DB.</li><br/>
+									<li><b>Update Order</b> – Though update order includes several other things an order can have but for simplicity we only using the <i>update order</i> for changing the state of the order for example  changing the order state from <i>pending</i> to <i>in-progress</i> and finally <i>delivered.</i></li><br/>
+									<li><b>Delete Order or Cancel Order</b> – When user wins over his craving and decides eat salad instead.</li><br/>
+								</ul>
+								
+								Every path you see in the below figure is the separate path that was created by the Claudia API Builder to serve the request from the user and send/receive the feed/response from their correspoing the lambda function, which them server back to the user accordingly
 
-					<ul>
-						<li><b>Get Order</b> – This event will trigger when a user try to find the available pizza from the user interface.</li><br/>
-						<li><b>Create Order</b> – Event when the user made a request for a particular pizza, which then will be saved to the storage DB.</li><br/>
-						<li><b>Update Order</b> – Though update order includes several other things an order can have but for simplicity we only using the <i>update order</i> for changing the state of the order for example  changing the order state from <i>pending</i> to <i>in-progress</i> and finally <i>delivered.</i></li><br/>
-						<li><b>Delete Order or Cancel Order</b> – When user wins over his craving and decides eat salad instead.</li><br/>
-					</ul>
-					
-					Every path you see in the below figure is the separate path that was created by the Claudia API Builder to serve the request from the user and send/receive the feed/response from their correspoing the lambda function, which them server back to the user accordingly
+								<img src="pizzeria_files/image002.jpg" class="image featured">
 
-					<img src="pizzeria_files/image002.jpg" class="image featured">
+								<ol>
+									<li>The user sends the request from a mobile or web application that will be transmitted to backend logic through the API Gateway.</li><br/>
+									<li>Since we are processing all the functions in the same lambda function we need to do internal routing to find action(GET/POST/PUT/DELETE) should trigger the proper handler function(get_orders.js/create-order.js/update-order.js etc).</li><br/>
+									<li>Based on the received request, Claudia API invokes corresponding handlers</li><br/>
+									<li>API Gateway parse the request and send to the corresponding service for example creating new order a <b>POST</b> request sent to the <b>“/orders”</b> path and its corresponding handler create-order.js will get triggered to serve it likewise for retrieving a list of orders a GET request sent to the <b>“/pizzas”</b> path and its corresponding handler <b>get-order.js</b> gets triggered.</li><br/>
+									<li>Once the request is fulfilled by the lambda handler response travel back to the user through Claudia to API Gateway</li><br/>
+								</ol>
+								<br/><br/>
+								Every ordering system has to store the order in some location, so that I can be referenced later.
+								<br/><br/>
+								To have the persistent storage of the order we will be using the Dynamo DB 
+								<br/><br/>
+								DynamoDB tables are similar to collections in traditional NoSQL database, it can store the data in key-value and document data structure, in this project we are using the Key-value format.
+								<br/><br/>
+								The below figure will show us how the function will interact with Dynamo DB and stores the information about order
+								<br/><br/>
+								<img src="pizzeria_files/image003.jpg" class="image featured">
+								<br/><br/>
+								Once oder is placed we use a third-party API to handles the delivery state of our order
+								<br/><br/>
+								Basic functionality of this dummy API is to return then delivery ID immediately when a request is sent to it and after some time(approx. 2 minutes ) it will send the delivery status of the order using the webhook.
+								<br/><br/>
+								When a create order request is sent to its function names <b><i>create-order.js,</i></b> it calls the delivery API(ie Dummy API) to inform the delivery service of the new order and  in return this dummy API will returns the unique delivery id against order request.
+								<br/><br/>
+								Upon receiving the response from the Dummy API  <b>create-order</b> function will make the entries in the Dynamo DB table to save the state of the order.
+								<br/><br/>
+								<img src="pizzeria_files/image004.jpg" class="image featured">
+								<br/><br/>
+								Detailed illustration of the order flow from customers to delivery API.
+								<br/><br/>
+								<ol>
+									<li>The customer requested the Pizza API</li><br/>
+									<li><span style='color:#538135'>A new order request will trigger the <i>create_order</i> function which makes entry to the DynamoDB with the status of order “<i>pending</i>” and trigger the Dummy API “Some Like it Hot Delivery”</span></li><br/>
+									<li><span style='color:#7030A0'>Dummy API will return the response with the delivery id</span></li><br/>
+									<li><span style='color:#538135'>On the above event response, it triggers the <i>update_order</i> function which updates the status of  an order from “<i>pending</i>” to “<i>in-progress</i>” to the Dynamo DB</span></li><br/>
+									<li><span style='color:#7030A0'>After 2 minutes Dummy API again send a response to the Pizza API which mark the order status to “<i>Delivery </i>” </span></li><br/>
+								</ol>
+								<img src="pizzeria_files/image005.jpg" class="image featured">
 
-					<ol>
-						<li>The user sends the request from a mobile or web application that will be transmitted to backend logic through the API Gateway.</li><br/>
-						<li>Since we are processing all the functions in the same lambda function we need to do internal routing to find action(GET/POST/PUT/DELETE) should trigger the proper handler function(get_orders.js/create-order.js/update-order.js etc).</li><br/>
-						<li>Based on the received request, Claudia API invokes corresponding handlers</li><br/>
-						<li>API Gateway parse the request and send to the corresponding service for example creating new order a <b>POST</b> request sent to the <b>“/orders”</b> path and its corresponding handler create-order.js will get triggered to serve it likewise for retrieving a list of orders a GET request sent to the <b>“/pizzas”</b> path and its corresponding handler <b>get-order.js</b> gets triggered.</li><br/>
-						<li>Once the request is fulfilled by the lambda handler response travel back to the user through Claudia to API Gateway</li><br/>
-					</ol>
-					<br/><br/>
-					Every ordering system has to store the order in some location, so that I can be referenced later.
-					<br/><br/>
-					To have the persistent storage of the order we will be using the Dynamo DB 
-					<br/><br/>
-					DynamoDB tables are similar to collections in traditional NoSQL database, it can store the data in key-value and document data structure, in this project we are using the Key-value format.
-					<br/><br/>
-					The below figure will show us how the function will interact with Dynamo DB and stores the information about order
-					<br/><br/>
-					<img src="pizzeria_files/image003.jpg" class="image featured">
-					<br/><br/>
-					Once oder is placed we use a third-party API to handles the delivery state of our order
-					<br/><br/>
-					Basic functionality of this dummy API is to return then delivery ID immediately when a request is sent to it and after some time(approx. 2 minutes ) it will send the delivery status of the order using the webhook.
-					<br/><br/>
-					When a create order request is sent to its function names <b><i>create-order.js,</i></b> it calls the delivery API(ie Dummy API) to inform the delivery service of the new order and  in return this dummy API will returns the unique delivery id against order request.
-					<br/><br/>
-					Upon receiving the response from the Dummy API  <b>create-order</b> function will make the entries in the Dynamo DB table to save the state of the order.
-					<br/><br/>
-					<img src="pizzeria_files/image004.jpg" class="image featured">
-					<br/><br/>
-					Detailed illustration of the order flow from customers to delivery API.
-					<br/><br/>
-					<ol>
-						<li>The customer requested the Pizza API</li><br/>
-						<li><span style='color:#538135'>A new order request will trigger the <i>create_order</i> function which makes entry to the DynamoDB with the status of order “<i>pending</i>” and trigger the Dummy API “Some Like it Hot Delivery”</span></li><br/>
-						<li><span style='color:#7030A0'>Dummy API will return the response with the delivery id</span></li><br/>
-						<li><span style='color:#538135'>On the above event response, it triggers the <i>update_order</i> function which updates the status of  an order from “<i>pending</i>” to “<i>in-progress</i>” to the Dynamo DB</span></li><br/>
-						<li><span style='color:#7030A0'>After 2 minutes Dummy API again send a response to the Pizza API which mark the order status to “<i>Delivery </i>” </span></li><br/>
-					</ol>
-					<img src="pizzeria_files/image005.jpg" class="image featured">
+								This is all we have to configure and code to make it all work.
 
-					This is all we have to configure and code to make it all work.
-
-					In the next section we will make a frontend which communicate to all of the above functions through API
-					<br/><br/>
-					STAY TUNED
-					<br/><br/>
-					<h><b>PEACE..!!<b></h>	
-				</p>		
-			</div>
-		</div>
-
-
-<!-- Footer -->
-<div id="footer">
-	<div class="container">
-
-
-		<div class="row">
-			<div class="col-12">
-
-				<!-- Contact -->
-				<section class="contact">
-					<header>
-						<h3>Diving in the abyss of serverless. </h3>
-					</header>
-					<p font-weight="700">Hi this is Ruben Rao. Its my first attempt to develop any project completely on the serverless services. This website demonstrates all my project behind the scenes, that I’ve completed to explore and learn serverless services</p>
-					<ul class="icons">
-						<li><a href="https://twitter.com/ruben_rao10" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-						<li><a href="https://www.facebook.com/ruben.rao.75" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-						<li><a href="https://www.instagram.com/ruben_rao/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-
-					</ul>
-				</section>
-
-				<!-- Copyright -->
-				<div class="copyright">
-					<ul class="menu">
-						<li>Managed by Ruben Rao.</li>
-						<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-					</ul>
+								In the next section we will make a frontend which communicate to all of the above functions through API
+								<br/><br/>
+								STAY TUNED
+								<br/><br/>
+								<h><b>PEACE..!!<b></h>	
+							</p>	
+						</article>	
+					</div>
 				</div>
-
 			</div>
+		</div>	
 
+		<!-- Footer -->
+		<div id="footer">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+						<!-- Contact -->
+						<section class="contact">
+							<header>
+								<h3>Diving in the abyss of serverless. </h3>
+							</header>
+							<p font-weight="700">Hi this is Ruben Rao. Its my first attempt to develop any project completely on the serverless services. This website demonstrates all my project behind the scenes, that I’ve completed to explore and learn serverless services</p>
+							<ul class="icons">
+								<li><a href="https://twitter.com/ruben_rao10" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+								<li><a href="https://www.facebook.com/ruben.rao.75" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+								<li><a href="https://www.instagram.com/ruben_rao/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+							</ul>
+						</section>
+
+						<!-- Copyright -->
+						<div class="copyright">
+							<ul class="menu">
+								<li>Managed by Ruben Rao.</li>
+								<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-	</div>
-</div>
 
 
 		<!-- Scripts -->
 		<script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"></script>
-
-    <script defer>
-      kofiWidgetOverlay.draw('rubenrao79269', {
-        type: 'floating-chat',
-        'floating-chat.donateButton.text': '',
-        'floating-chat.donateButton.background-color': '#323842',
-        'floating-chat.donateButton.text-color': '#fff',
-      });
-    </script>
-    <style defer>
-      .floatingchat-container-wrap,
-      .floatingchat-container-wrap-mobi,
-      .floating-chat-kofi-popup-iframe,
-      .floating-chat-kofi-popup-iframe-mobi {
-        left: auto !important;
-        right: 5px !important;
-        bottom: 8px;
-        width: 15%;
-      }
-      .floatingchat-donate-button {
-        padding: 0px;
-        height: 45px;
-      }
-      .kofiimg {
-        padding-left: 1.5em;
-        width: 29px;
-      }
-      .floating-chat-kofi-popup-iframe-closer,
-      .floating-chat-kofi-popup-iframe-closer-mobi {
-        left: -10px !important;
-        right: auto !important;
-      }
-    </style>
+		<script defer>
+		kofiWidgetOverlay.draw('rubenrao79269', {
+			type: 'floating-chat',
+			'floating-chat.donateButton.text': '',
+			'floating-chat.donateButton.background-color': '#323842',
+			'floating-chat.donateButton.text-color': '#fff',
+		});
+		</script>
+		<style defer>
+		.floatingchat-container-wrap,
+		.floatingchat-container-wrap-mobi,
+		.floating-chat-kofi-popup-iframe,
+		.floating-chat-kofi-popup-iframe-mobi {
+			left: auto !important;
+			right: 5px !important;
+			bottom: 8px;
+			width: 15%;
+		}
+		.floatingchat-donate-button {
+			padding: 0px;
+			height: 45px;
+		}
+		.kofiimg {
+			padding-left: 1.5em;
+			width: 29px;
+		}
+		.floating-chat-kofi-popup-iframe-closer,
+		.floating-chat-kofi-popup-iframe-closer-mobi {
+			left: -10px !important;
+			right: auto !important;
+		}
+		</style>
 	</body>
 </html>

@@ -8,10 +8,10 @@
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-174482799-2"></script>
 		<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
-		gtag('config', 'UA-174482799-2');
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'UA-174482799-2');
 		</script>
 		
 	</head>
@@ -37,7 +37,7 @@
 						In this post, we will put in a path to use the Facebook support of chatbot APIs for replicating the same ordering system from Facebook Messenger. To keep this post small and avoid TL;DR we will be focusing just on basic things like setting up the connection to Facebook to backend node.js app and only respond with a simple “Hello” message from it.
 						<br/>
 						<br/>
-						So, let’s start building our chatbot.
+						So, let's start building our chatbot.
 						<br/>
 						<br/>
 
@@ -45,7 +45,7 @@
 						<br/>
 						We need a <i>Facebook application</i> that will link with your <i>Facebook page</i> which acts as a frontend of your messaging and all the heavy lifting of integration is done through the Facebook Application.
 
-						Facebook Application for chat-bot isn’t</span> independent, like games developed on Facebook. There has to</span> be some front-end page that our application will latch him to do what it is meant to be, its more like a symbiote.
+						Facebook Application for chat-bot isn't</span> independent, like games developed on Facebook. There has to</span> be some front-end page that our application will latch him to do what it is meant to be, its more like a symbiote.
 						<br/>
 						<br/>
 
@@ -57,7 +57,7 @@
 							<li>Connect your backend chatbot app to your Facebook application.</li>
 						</ol>
 						<br/>
-						We will be using the Claudia Bot Builder to interact with Facebook API’s for chatbot as it abstracts away the various messaging platform APIs and provides a simple, unified API for building you chatbots
+						We will be using the Claudia Bot Builder to interact with Facebook API's for chatbot as it abstracts away the various messaging platform APIs and provides a simple, unified API for building you chatbots
 						<br/>
 						<br/>
 						<img src="pizzeria-chatbot_files/image001.jpg" class="image featured">
@@ -149,7 +149,7 @@
 						<br/>
 						<br/>
 						It will take some time for Claudia to set up the thing like API Gateway, AWS Lambda, and IAM permission in the cloud.
-						After your code is deployed to an AWS Lambda function the command will generate and print the “<i>webhook URL</i>” and “<i>verify token</i>” which you’ll</span> need to configure your chatbot application.
+						After your code is deployed to an AWS Lambda function the command will generate and print the “<i>webhook URL</i>” and “<i>verify token</i>” which you'll</span> need to configure your chatbot application.
 						<br/>
 						<br/>
 						Keep the terminal open, because the process is not completed yet.
@@ -250,12 +250,14 @@
 						<img src="pizzeria-chatbot_files/fb_messenger_mvp.gif" >
 						<br/>
 						<br/>
-				</article>
+						</article>
+					</div>
+				</div>
 			</div>
 		</div>
 
 
-<!-- Footer -->
+		<!-- Footer -->
 		<div id="footer">
 			<div class="container">
 				<div class="row">
@@ -264,7 +266,7 @@
 							<header>
 								<h3>Diving in the abyss of serverless. </h3>
 							</header>
-							<p font-weight="700">Hi this is Ruben Rao. Its my first attempt to develop any project completely on the serverless services. This website demonstrates all my project behind the scenes, that I’ve completed to explore and learn serverless services
+							<p font-weight="700">Hi this is Ruben Rao. Its my first attempt to develop any project completely on the serverless services. This website demonstrates all my project behind the scenes, that I've completed to explore and learn serverless services
 							<ul class="icons">
 								<li><a href="https://twitter.com/ruben_rao10" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
 								<li><a href="https://www.facebook.com/ruben.rao.75" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
@@ -290,37 +292,37 @@
 		<!-- Scripts -->
 		<script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"></script>
 
-    <script defer>
-      kofiWidgetOverlay.draw('rubenrao79269', {
-        type: 'floating-chat',
-        'floating-chat.donateButton.text': '',
-        'floating-chat.donateButton.background-color': '#323842',
-        'floating-chat.donateButton.text-color': '#fff',
-      });
-    </script>
-    <style defer>
-      .floatingchat-container-wrap,
-      .floatingchat-container-wrap-mobi,
-      .floating-chat-kofi-popup-iframe,
-      .floating-chat-kofi-popup-iframe-mobi {
-        left: auto !important;
-        right: 5px !important;
-        bottom: 8px;
-        width: 15%;
-      }
-      .floatingchat-donate-button {
-        padding: 0px;
-        height: 45px;
-      }
-      .kofiimg {
-        padding-left: 1.5em;
-        width: 29px;
-      }
-      .floating-chat-kofi-popup-iframe-closer,
-      .floating-chat-kofi-popup-iframe-closer-mobi {
-        left: -10px !important;
-        right: auto !important;
-      }
-    </style>
+		<script defer>
+		kofiWidgetOverlay.draw('rubenrao79269', {
+			type: 'floating-chat',
+			'floating-chat.donateButton.text': '',
+			'floating-chat.donateButton.background-color': '#323842',
+			'floating-chat.donateButton.text-color': '#fff',
+		});
+		</script>
+		<style defer>
+		.floatingchat-container-wrap,
+		.floatingchat-container-wrap-mobi,
+		.floating-chat-kofi-popup-iframe,
+		.floating-chat-kofi-popup-iframe-mobi {
+			left: auto !important;
+			right: 5px !important;
+			bottom: 8px;
+			width: 15%;
+		}
+		.floatingchat-donate-button {
+			padding: 0px;
+			height: 45px;
+		}
+		.kofiimg {
+			padding-left: 1.5em;
+			width: 29px;
+		}
+		.floating-chat-kofi-popup-iframe-closer,
+		.floating-chat-kofi-popup-iframe-closer-mobi {
+			left: -10px !important;
+			right: auto !important;
+		}
+		</style>
 	</body>
 </html>

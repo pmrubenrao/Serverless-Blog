@@ -1,243 +1,462 @@
 ﻿﻿<html>
-<head>
-	<title>SERVERLESS PROJECT</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="assets/css/main.css" />
-	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-174482799-2"></script>
-	<script>
-	window.dataLayer = window.dataLayer || [];
-	function gtag(){dataLayer.push(arguments);}
-	gtag('js', new Date());
-	gtag('config', 'UA-174482799-2');
-	</script>
+  <head>
+    <title>SERVERLESS PROJECT</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript
+      ><link rel="stylesheet" href="assets/css/noscript.css"
+    /></noscript>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-174482799-2"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'UA-174482799-2');
+    </script>
+  </head>
+  <body class="no-sidebar is-preload">
+    <div id="page-wrapper">
+      <div class="WordSection1">
+        <div class="wrapper style1">
+          <div class="container">
+            <article id="main" class="special">
+              <a
+                href="./index.html"
+                style="position: fixed; right: 92%; top: 24%"
+              >
+                <img src="./images/back.svg" style="width: 2rem; height: 2rem"
+              /></a>
+              <header>
+                <h2><a href="#">Video hosting website</a></h2>
+                <p>
+                  This project utilizes the power of the serverless services out
+                  there in the wild.
+                </p>
+              </header>
+              <p>
+                <img class="image featured" src="images/pic06.jpg" />
+              </p>
+              So I came across this amazing book on Serverless Architectures on
+              AWS With examples using AWS Lambda by Peter Sbarski which is a
+              whole project in the form of a book that explains almost
+              everything from the basics to building and fairly complex
+              architecture to host the whole video hosting website.
+              <br /><br />
+              Even if you have not come across the serverless services like AWS
+              Lambda, API Gateway, S3 buckets, SNS (Simple Notification
+              Service).
+              <br /><br />
+              A must-read if you are a beginner and could not find a way where
+              to start.
+              <br /><br />
+              What is a lambda function?
+              <br /><br />
+              <i>
+                “AWS Lambda is a compute service that executes code written in
+                JavaScript (node.js), Python, C#, or Java on AWS infrastructure.
+                Source code (JARs or DLLs in case of Java or C#) is zipped up
+                and deployed to an isolated container that has an allocation of
+                memory, disk space, and CPU.</i
+              >
+              <br /><br />
+              <i>
+                The combination of code, configuration, and dependencies is
+                typically referred to as a Lambda function . The Lambda runtime
+                can invoke a function multiple times in parallel. Lambda
+                supports push and pull event models of operation and integrates
+                with a large number of AWS services.''
+              </i>
+              <br /><br />
 
-</head>
-<body class="no-sidebar is-preload">
+              Boring isn't it
+              <br /><br />
+              Let's explain it with an example
+              <br /><br />
+              Most of this software requires servers running in data centers or
+              in the cloud that needs to be managed, maintained, patched, and
+              backed up. Provisioning, managing, and patching of servers is a
+              time-consuming task that often requires dedicated operations
+              people.
+              <br /><br />
+              Imagine a world where you can skip all those.
+              <br /><br />
+              Yes, it is possible through the Lambda function. It's a compute
+              service from Amazon web services that can execute code in a
+              massively parallelized way in response to the events. Lambda takes
+              your code run it without any need to provision servers, install
+              software, deploy containers, or worry about the low- level
+              details.
+              <br /><br />
+              Still don't doesn't make any sense, don't worry you will once you
+              start building it by yourself.
+              <br /><br />
+              You just have to start it without thinking too much.
+              <br /><br />
+              So, let us begin with the first module.
+              <br /><br /><br />
+              Services used:
+              <br />
+              <ol>
+                <li>AWS Lambda - to run your code</li>
+                <br />
+                <li>Amazon S3 - to store your video files</li>
+                <br />
+                <li>
+                  AWS transcoder - convert the videos in appropriate formats
+                </li>
+                <br />
+                <li>
+                  Simple Notification Service (SNS) - to trigger other services
+                  or send the notification through e-mail and text message.
+                </li>
+                <br />
+              </ol>
+              <br /><br />
+              Every Video hosting site has a video transcoder that converts the
+              video to be able to watch on multiple devices.
+              <br /><br />
+              S3 bucket is used for storing the uploaded videos and it will be
+              integrated with Lambda to trigger the Elastic transcode whose sole
+              purpose is to create the video in a different format like 360p,
+              720p, 1080p.
+              <br /><br />
+              <a href="#" class="image featured"
+                ><img src="Videohost_files/image001.png" alt=""
+              /></a>
+              <ol>
+                <li>User-uploaded data went to S3 object Storage.</li>
+                <br />
+                <li>
+                  As soon as the video is uploaded it triggers the Lambda
+                  function as configured in the event section in the S3
+                  properties.
+                </li>
+                <br />
+                <li>
+                  Lambda function now creates a transcode code job for Elastic
+                  transcoder by providing the pipeline ID, file location, and
+                  format type we need to have as an output
+                </li>
+                <br />
+                <li>
+                  The job will then be submitted to the Elastic Transcoder for
+                  processing
+                </li>
+                <br />
+                <li>
+                  The submitted job is then executed by the Elastic Transcoder
+                  and generate the 3-video format
+                </li>
+                <br />
+                <li>
+                  These newly created video formats were then saved in another
+                  S3 bucket.
+                </li>
+                <br />
+                <br />
+                <a href="#" class="image featured"
+                  ><img src="Videohost_files/image003.png" alt=""
+                /></a>
+                <li>
+                  Now we have all the format (320p,720p,1080p) in new S3 bucket
+                </li>
+                <br />
+                <li>
+                  Just like we have event configured in the upload s3 bucket
+                  which triggers the lambda function for the transcoder job,
+                  this time we trigger the SNS service for notification.
+                </li>
+                <br />
+                <li>
+                  An SNS service was configured to send notification and to act
+                  as the event for the Lambda function.
+                </li>
+                <br />
+                <li>Once the SNS was triggered it does two things</li>
+                <br />
+                <ol type="a">
+                  <li>
+                    Change the object permission (so that it can be accessed
+                    within the application)
+                  </li>
+                  <br />
+                  <li>Create the metadata of the generated format.</li>
+                  <br />
+                  <li>
+                    Also, send the notification to the user with the metadata of
+                    the upload file.
+                  </li>
+                  <br />
+                </ol>
+                <li>
+                  a. This lambda function will change Object (video file)
+                  permission generated by the Elastic transcoder
+                </li>
+                <br />
+                <li>
+                  b. This lambda function will create the metadata file within
+                  the same S3 bucket where the formatted files are created.
+                </li>
+                <br />
+              </ol>
+              <br /><br />
+              <b>Second module:</b>
+              <br />
+              Adding authentication to the website which allows user to login in
+              and browses through the personalized content, by personalized I
+              meant the user's uploaded content.
+              <br /><br />
+              Services used:
+              <br /><br />
+              <ol>
+                <li>AWS Lambda</li>
+                <br />
+                <li>API Gateway</li>
+                <br />
+                <li>Auth0 for user authentication</li>
+                <br />
+                <li>AWS IAM for user authorization</li>
+                <br />
+                <li>Website (FE) using Bootstrap and jQuery.</li>
+                <br />
+              </ol>
+              <br />
+              The below Figure will explain how the Auth0 was integrated with
+              the website to authenticate the user and then the JWT token
+              returned from the Auth0 were used to authorize the user to access
+              the back AWS services.
+              <br /><br />
+              <ol>
+                <li>Users click the login button on the website.</li>
+                <br />
+                <li>The client application launches the Auth0 login screen.</li>
+                <br />
+                <li>
+                  For now, the only social provider you can use free on Auth0 is
+                  Google-oauth2
+                </li>
+                <br />
+                <li>
+                  Authentication is performed through Auth0 and once it
+                  authenticates by the social provider Auth0 sends JSON Web
+                  Token which later then be exchanged to access backend services
+                </li>
+                <br />
+                <li>
+                  Once the user is authenticated client application requests the
+                  API Gateway
+                </li>
+                <br />
+                <li>
+                  API Gateway passes the received JWT token to the lambda
+                  function.
+                </li>
+                <br />
+                <li>
+                  Lambda function validates the JWT token and generates a
+                  response sends back to API Gateway and eventually reaches the
+                  client application.
+                </li>
+                <br />
+              </ol>
+              <a href="#" class="image featured"
+                ><img src="Videohost_files/image005.png" alt=""
+              /></a>
+              <b>Third module:</b>
+              <br />
+              Since we are transcoding the video in appropriate formats, the
+              transcoder needs some time to build those formats
+              <br /><br />
+              This module is for adding the buffer time, so that once the user
+              upload video completes frontend show animation which denotes the
+              uploaded video in under transcodeing phase this is done by
+              maintaining an entry in the Google Firebase database which mark
+              the video transcoding : True for video under this phase
+              <br /><br />
+              The final architecture looks like this.
+              <br />
+              <a href="#" class="image featured"
+                ><img src="Videohost_files/image007.png" alt=""
+              /></a>
+              As the video is sent to the transcoder, we will make an entry to
+              the firebase database will make entry to its database by setting
+              its transcoding value to true.
+              <a href="#" class="image featured"
+                ><img src="Videohost_files/image009.png" alt=""
+              /></a>
+              And the lambda function which gets the list of all transcoded
+              videos from the S3 bucket is designed to pick only those videos
+              whose transcoding value is false.
+              <br /><br />
+              During the course through this book, you will create several
+              lambda functions which will get minor updates now and then as you
+              move through the different chapters.
+              <br /><br />
+              <ol>
+                <li>
+                  <b>Extract-metadata</b> - for extracting and storing the
+                  metadata of uploaded videos
+                </li>
+                <br />
+                <li>
+                  <b>Get-video-list</b> - to get the list of transcoded videos
+                  which is used by the frontend to display on the website
+                </li>
+                <br />
+                <li>
+                  <b>Get-signed-URL</b> - this is used to generate the private
+                  signed URL for all the videos
+                </li>
+                <br />
+                <li>
+                  <b>Get-upload-policy</b> - used by custom authorizer to allow
+                  only authenticated user to watch the videos
+                </li>
+                <br />
+                <li>
+                  <b>Set-permission</b> - set the permission to allow the video
+                  to be accessible publicly which you'll abandon once you create
+                  the get-signed-URL function
+                </li>
+                <br />
+                <li>
+                  <b>Transcode-video</b> - it creates the data for the
+                  transcoder job which then trigger the Elastic transcoder
+                </li>
+                <br />
+                <li>
+                  <b>Transcode-video-firebase-update</b> - firebase integration
+                </li>
+                <br />
+                <li>
+                  <b>User- profile</b> - Introduce the Auth0 authentication to
+                  the website, you might be stuck here because of the recent
+                  update in the auth0 links
+                </li>
+                <br />
+              </ol>
+              <br />
+              There were other parts to the projects which I skipped so that I
+              would not overwhelm you guys
+              <br /><br />
+              For the beginners, I know for start, it seems too much to take on,
+              but believe me, all the parts of the chapters were designed to
+              build the smallest module first and building it pieces by pieces
+              to the final big module.
+              <br /><br />
+              All the integration parts where different functions and API
+              gateways integrated were explained alongside to keep the rhythm.
+              <br /><br />
+              If you are interested to explore the world of serverless you would
+              love it.
+              <br /><br />
+              <b>PS:</b> There were some bugs in the code provided by the author
+              but its fixable and I suggest you should first google it, I found
+              all of my answers through google or reading it to a rubber duck or
+              by taking a walk, but if you feel lost you can contact me at
+              <b>pmrubenrao@gmail.com</b>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
 
-		<div class="wrapper style1">
-			<div class="container">		
-				<article id="main" class="special">
-					<a href="./index.html" style="position: fixed;right:92%;top:24%">
-						<img src="./images/back.svg" style="width:2rem;height:2rem" ></a>
-					<header>
-						<h2><a href="#">Video hosting website</a></h2>
-						<p>
-							This project utilizes the power of the serverless services out there in the wild.</p>						
-					</header>
-					
-					<p>
-						<img class="image featured" src="images/pic06.jpg" />			
-					</p>
-					
-						So I came across this amazing book on Serverless Architectures on AWS With examples using AWS Lambda by Peter Sbarski which is a whole project in the form of a book that explains almost everything from the basics to building and fairly complex architecture to host the whole video hosting website.
-						<br/><br/>
-						Even if you have not come across the serverless services like AWS Lambda, API Gateway, S3 buckets, SNS (Simple Notification Service).
-						<br/><br/>
-						A must-read if you are a beginner and could not find a way where to start.
-						<br/><br/>
-						What is a lambda function?
-						<br/><br/>
-						<i>
-						“AWS Lambda is a compute service that executes code written in JavaScript (node.js),
-						Python, C#, or Java on AWS infrastructure. Source code (JARs or DLLs in case of Java						
-						or C#) is zipped up and deployed to an isolated container that has an allocation of						
-						memory, disk space, and CPU.</i>
-						<br/><br/>
-						<i>
-							The combination of code, configuration, and dependencies is typically referred to as a Lambda function . The Lambda runtime can invoke a function multiple times in parallel. Lambda supports push and pull event models of operation and integrates with a large number of AWS services.”
-						</i>
-						<br/><br/>
-						
-						Boring isn’t it
-						<br/><br/>
-						Let’s explain it with an example
-						<br/><br/>
-						Most of this software requires servers running in data centers or in the cloud that needs to be managed, maintained, patched, and backed up. Provisioning, managing, and patching of servers is a time-consuming task that often requires dedicated operations people.
-						<br/><br/>
-						Imagine a world where you can skip all those.
-						<br/><br/>
-						Yes, it is possible through the Lambda function. It’s a compute service from Amazon web services that can execute code in a massively parallelized way in response to the events. Lambda takes your code run it without any need to provision servers, install software, deploy containers, or worry about the low- level details.
-						<br/><br/>
-						Still don’t doesn’t make any sense, don’t worry you will once you start building it by yourself.
-						<br/><br/>
-						You just have to start it without thinking too much.
-						<br/><br/>
-						So, let us begin with the first module.
-						<br/><br/><br/>
-						Services used:
-						<br/>
-						<ol>
-							<li>AWS Lambda  - to run your code</li><br/>
-							<li>Amazon S3 - to store your video files</li><br/>
-							<li>AWS transcoder -  convert the videos in appropriate formats</li><br/>
-							<li>Simple Notification Service (SNS) -  to trigger other services or send the notification through e-mail and text message.</li><br/>
-							
-						</ol>
-						<br/><br/>
-						Every Video hosting site has a video transcoder that converts the video to be able to watch on multiple devices.
-						<br/><br/>
-						S3 bucket is used for storing the uploaded videos and it will be integrated with Lambda to trigger the Elastic transcode whose sole purpose is to create the video in a different format like 360p, 720p, 1080p.
-						<br/><br/>
-						<a href="#" class="image featured"><img src="Videohost_files/image001.png" alt="" /></a>
-						<ol>
-							<li>User-uploaded data went to S3 object Storage.</li><br/>
-							<li>As soon as the video is uploaded it triggers the Lambda function as configured in the event section in the S3 properties.</li><br/>
-							<li>Lambda function now creates a transcode code job for Elastic transcoder by providing the pipeline ID, file location, and format type we need to have as an output
-							</li><br/>
-							<li>The job will then be submitted to the Elastic Transcoder for processing</li><br/>
-							<li>The submitted job is then executed by the Elastic Transcoder and generate the 3-video format</li><br/>
-							<li>These newly created video formats were then saved in another S3 bucket.</li><br/>
-							<br/>
-							<a href="#" class="image featured"><img src="Videohost_files/image003.png" alt="" /></a>
-							<li>Now we have all the format (320p,720p,1080p) in new S3 bucket</li><br/>
-							<li>Just like we have event configured in the upload s3 bucket which triggers the lambda function for the transcoder job, this time we trigger the SNS service for notification.</li><br/>
-							<li>An SNS service was configured to send notification and to act as the event for the Lambda function.</li><br/>
-							<li>Once the SNS was triggered it does two things</li><br/>
-						<ol type="a">
-							<li>Change the object permission (so that it can be accessed within the application)</li><br/>
-							<li>Create the metadata of the generated format.</li><br/>
-							<li>Also, send the notification to the user with the metadata of the upload file.</li><br/>
-						</ol>	
-							<li>a. This lambda function will change Object (video file) permission generated by the Elastic transcoder</li><br/>
-							<li>b. This lambda function will create the metadata file within the same S3 bucket where the formatted files are created.</li><br/>
+    <!-- Footer -->
+    <div id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <!-- Contact -->
+            <section class="contact">
+              <header>
+                <h3>Diving in the abyss of serverless.</h3>
+              </header>
+              <p font-weight="700">
+                Hi this is Ruben Rao. Its my first attempt to develop any
+                project completely on the serverless services. This website
+                demonstrates all my project behind the scenes, that I've
+                completed to explore and learn serverless services
+              </p>
+              <ul class="icons">
+                <li>
+                  <a
+                    href="https://twitter.com/ruben_rao10"
+                    class="icon brands fa-twitter"
+                    ><span class="label">Twitter</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://www.facebook.com/ruben.rao.75"
+                    class="icon brands fa-facebook-f"
+                    ><span class="label">Facebook</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://www.instagram.com/ruben_rao/"
+                    class="icon brands fa-instagram"
+                    ><span class="label">Instagram</span></a
+                  >
+                </li>
+              </ul>
+            </section>
 
-						</ol> 
-						<br/><br/>
-						<b>Second module:</b>
-						<br/>
-						Adding authentication to the website which allows user to login in and browses through the personalized content, by personalized I meant the user’s uploaded content.
-						<br/><br/>
-						Services used:
-						<br/><br/>
-						<ol>
-							<li>AWS Lambda</li><br/>
-							<li>API Gateway</li><br/>
-							<li>Auth0 for user authentication</li><br/>
-							<li>AWS IAM for user authorization</li><br/>
-							<li>Website (FE) using Bootstrap and jQuery.</li><br/>
-						</ol>
-						<br/>
-						The below Figure will explain how the Auth0 was integrated with the website to authenticate the user and then the JWT token returned from the Auth0 were used to authorize the user to access the back AWS services.
-						<br/><br/>
-						<ol>
-							<li>Users click the login button on the website.</li><br/>
-							<li>The client application launches the Auth0 login screen.</li><br/>
-							<li>For now, the only social provider you can use free on Auth0 is Google-oauth2</li><br/>
-							<li>Authentication is performed through Auth0 and once it authenticates by the social provider Auth0 sends JSON Web Token which later then be exchanged to access backend services</li><br/>
-							<li>Once the user is authenticated client application requests the API Gateway</li><br/>
-							<li>API Gateway passes the received JWT token to the lambda function.</li><br/>
-							<li>Lambda function validates the JWT token and generates a response sends back to API Gateway and eventually reaches the client application.</li><br/>
-						</ol>
-						<a href="#" class="image featured"><img src="Videohost_files/image005.png" alt="" /></a>
-						<b>Third module:</b>
-						<br/>
-						Since we are transcoding the video in appropriate formats, the transcoder needs some time to build those formats
-						<br/><br/>
-						This module is for adding the buffer time, so that once the user upload video completes frontend show animation which denotes the uploaded video in under transcodeing phase this is done  by maintaining an entry in the Google Firebase database which mark the video transcoding : True  for video under this phase
-						<br/><br/>
-						The final architecture looks like this.
-						<br/>				
-						<a href="#" class="image featured"><img src="Videohost_files/image007.png" alt="" /></a>						
-						As the video is sent to the transcoder, we will make an entry to the firebase database will make entry to its database by setting its transcoding value to true.
-						<a href="#" class="image featured"><img src="Videohost_files/image009.png" alt="" /></a>
-						And the lambda function which gets the list of all transcoded videos from the S3 bucket is designed to pick only those videos whose transcoding value is false.
-						<br/><br/>
-						During the course through this book, you will create several lambda functions which will get minor updates now and then as you move through the different chapters.
-						<br/><br/>
-						<ol>
-							<li><b>Extract-metadata</b> - for extracting and storing the metadata of uploaded videos</li><br/>
-							<li><b>Get-video-list</b> - to get the list of transcoded videos which is used by the frontend to display on the website</li><br/>
-							<li><b>Get-signed-URL</b> - this is used to generate the private signed URL for all the videos</li><br/>
-							<li><b>Get-upload-policy</b> - used by custom authorizer to allow only authenticated user to watch the videos</li><br/>
-							<li><b>Set-permission</b> - set the permission to allow the video to be accessible publicly which you’ll abandon once you create the get-signed-URL function</li><br/>
-							<li><b>Transcode-video</b> - it creates the data for the transcoder job which then trigger the Elastic transcoder</li><br/>
-							<li><b>Transcode-video-firebase-update</b> - firebase integration</li><br/>
-							<li><b>User- profile</b>  - Introduce the Auth0 authentication to the website, you might be stuck here because of the recent update in the auth0 links</li><br/>
-						</ol>
-						<br/>
-						There were other parts to the projects which I skipped so that I would not overwhelm you guys
-						<br/><br/>
-						For the beginners, I know for start, it seems too much to take on, but believe me, all the parts of the chapters were designed to build the smallest module first and building it pieces by pieces to the final big module.
-						<br/><br/>
-						All the integration parts where different functions and API gateways integrated were explained alongside to keep the rhythm.
-						<br/><br/>
-						If you are interested to explore the world of serverless you would love it.
-						<br/><br/>
-						<b>PS:</b> There were some bugs in the code provided by the author but its fixable and I suggest you should first google it, I found all of my answers through google or reading it to a rubber duck or by taking a walk, but if you feel lost you can contact me at <b>pmrubenrao@gmail.com</b>
-					</p>
-				</article>
+            <!-- Copyright -->
+            <div class="copyright">
+              <ul class="menu">
+                <li>Managed by Ruben Rao.</li>
+                <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+              </ul>
             </div>
-		</div>
-		
-		<!-- Footer -->
-		<div id="footer">
-			<div class="container">
-				<div class="row">
-					<div class="col-12">
+          </div>
+        </div>
+      </div>
+    </div>
 
-						<!-- Contact -->
-						<section class="contact">
-							<header>
-								<h3>Diving in the abyss of serverless. </h3>
-							</header>
-							<p font-weight="700">Hi this is Ruben Rao. Its my first attempt to develop any project completely on the serverless services. This website demonstrates all my project behind the scenes, that I’ve completed to explore and learn serverless services
-							<ul class="icons">
-								<li><a href="https://twitter.com/ruben_rao10" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-								<li><a href="https://www.facebook.com/ruben.rao.75" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-								<li><a href="https://www.instagram.com/ruben_rao/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+    <!-- Scripts -->
+    <script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"></script>
 
-							</ul>
-						</section>
-
-						<!-- Copyright -->
-						<div class="copyright">
-							<ul class="menu">
-								<li>Managed by Ruben Rao.</li>
-								<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-        <!-- Scripts -->
-		<script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"></script>
-
-			<script defer>
-			kofiWidgetOverlay.draw('rubenrao79269', {
-				type: 'floating-chat',
-				'floating-chat.donateButton.text': '',
-				'floating-chat.donateButton.background-color': '#323842',
-				'floating-chat.donateButton.text-color': '#fff',
-			});
-			</script>
-			<style defer>
-			.floatingchat-container-wrap,
-			.floatingchat-container-wrap-mobi,
-			.floating-chat-kofi-popup-iframe,
-			.floating-chat-kofi-popup-iframe-mobi {
-				left: auto !important;
-				right: 5px !important;
-				bottom: 8px;
-				width: 15%;
-			}
-			.floatingchat-donate-button {
-				padding: 0px;
-				height: 45px;
-			}
-			.kofiimg {
-				padding-left: 1.5em;
-				width: 29px;
-			}
-			.floating-chat-kofi-popup-iframe-closer,
-			.floating-chat-kofi-popup-iframe-closer-mobi {
-				left: -10px !important;
-				right: auto !important;
-			}
-			</style>
-            
-</body>
+    <script defer>
+      kofiWidgetOverlay.draw('rubenrao79269', {
+        type: 'floating-chat',
+        'floating-chat.donateButton.text': '',
+        'floating-chat.donateButton.background-color': '#323842',
+        'floating-chat.donateButton.text-color': '#fff',
+      });
+    </script>
+    <style defer>
+      .floatingchat-container-wrap,
+      .floatingchat-container-wrap-mobi,
+      .floating-chat-kofi-popup-iframe,
+      .floating-chat-kofi-popup-iframe-mobi {
+        left: auto !important;
+        right: 5px !important;
+        bottom: 8px;
+        width: 15%;
+      }
+      .floatingchat-donate-button {
+        padding: 0px;
+        height: 45px;
+      }
+      .kofiimg {
+        padding-left: 1.5em;
+        width: 29px;
+      }
+      .floating-chat-kofi-popup-iframe-closer,
+      .floating-chat-kofi-popup-iframe-closer-mobi {
+        left: -10px !important;
+        right: auto !important;
+      }
+    </style>
+  </body>
 </html>

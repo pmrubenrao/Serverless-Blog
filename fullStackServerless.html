@@ -1,224 +1,417 @@
 ﻿<html>
-	<head>
-		<title>SERVERLESS PROJECT</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-174482799-2"></script>
-		<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
-		gtag('config', 'UA-174482799-2');
-		</script>
+  <head>
+    <title>SERVERLESS PROJECT</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript
+      ><link rel="stylesheet" href="assets/css/noscript.css"
+    /></noscript>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-174482799-2"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'UA-174482799-2');
+    </script>
+  </head>
+  <body class="no-sidebar is-preload">
+    <div id="page-wrapper">
+      <div class="wrapper style1">
+        <div class="container">
+          <article id="main" class="special">
+            <a
+              href="./index.html"
+              style="position: fixed; right: 92%; top: 24%"
+            >
+              <img src="./images/back.svg" style="width: 2rem; height: 2rem"
+            /></a>
+            <header>
+              <h2><a href="#">Full-stack serverless through AWS Amplify</a></h2>
+            </header>
+            <i>
+              Full-stack serverless is about providing the developers with
+              everything needs on both stacks to accomplish their objective of
+              building a scalable application as quickly as possible.
+              <br />
+              <br />
+              If you are new to AWS, the number of services can be overwhelming
+              for you, to help AWS has created the Amplify CLI. It allows
+              developers to create, configure, update, delete cloud services
+              directly from the frontend environment.
+            </i>
+            <br />
+            <br />
+            <b>Amplify client:</b>
+            <br /><br />
+            Its bundle of the library for easy-to-use API for JS application
+            which needs to interact with AWS services.
+            <br />
+            It also supports other SDKs for React native, native iOS, and native
+            Android and frontend and mobile framework support including React,
+            React Native, Vue, Angular, native Android, and native iOS.
+            <br />
+            <br />
+            <b>AWS AppSync:</b>
+            <br />
+            AppSync is a manager API layer that uses GraphQL to make it easy for
+            the application to interact with any data source, REST API, or
+            microservices.
+            <br />
+            GraphQL offers a good abstraction for creating an API gateway. It
+            defines a consistent specification for interacting with APIs in the
+            form of three operation
+            <ol>
+              <li>Queries (reads)</li>
+              <br />
+              <li>Mutations (write/updates)</li>
+              <br />
+              <li>Subscriptions (real-time data)</li>
+              <br />
+            </ol>
+            <br />
+            <br />
+            Before building a GraphQl API we have to build, deploy, maintain and
+            configure our API which can be offloaded to AWS though AppSync
+            <br />
+            <br />
+            <b>Installing and configuring the Amplify CLI</b>
+            <br />
+            First, install and configure the Amplify CLI
+            <br />
+            <code> ~ npm install -g @aws-amplify/cli </code>
+            <br />
+            <br />
+            Once it's installed you need to configure it with IAM use in your
+            AWS account(access key ID and secret access key) To create a new
+            user and configure the CLI, run the configure command
+            <br />
+            <code>~ amplify configure</code>
+            <br />
+            <br />
+            The prompt will ask you for:
+            <br />
+            <ol>
+              <li>Specify the AWS region</li>
+              <br />
+              <li>Specify the username</li>
+              <br />
+            </ol>
+            <br />
+            <br />
+            Once you give the above information CLI would take you to the AWS
+            IAM dashboard from there you can set the permission that this newly
+            created user should have and later on IAM will generate an access
+            key ID and secret access key for it
+            <br /><br />
+            Go back to CLI and paste in the values for the access key ID and
+            secret access key.
+            <br />
+            Now you've successfully configured the CLI and you can begin
+            creating new services.
+            <br />
+            <br />
+            <b>Initializing Amplify Project: </b>
+            <br />
+            Let's create the react app. Goto to your root folder of yours(where
+            you want all your project files should be)
+            <br />
+            <code>~ npm install aws-amplify @aws-amplify/ui-react.</code>
+            <br />
+            <br />
+            Now, we initialize our Amplify project.
+            <br />
+            <code>~ amplify init</code>
+            <br /><br />
 
-	</head>
-	<body class="no-sidebar is-preload">
-		<div id="page-wrapper">
-			<div class="wrapper style1">
-				<div class="container">
-					<article id="main" class="special">
-						<a href="./index.html" style="position: fixed;right:92%;top:24%">
-							<img src="./images/back.svg" style="width:2rem;height:2rem" ></a>
-						<header>
-							<h2><a href="#">Full-stack serverless through AWS Amplify</a></h2>
-						</header>
-							<i>
-								Full-stack serverless is about providing the developers with everything needs on both stacks to accomplish their objective of building a scalable application as quickly as possible.
-								<br/>
-								<br/>
-								If you are new to AWS, the number of services can be overwhelming for you, to help AWS has created the Amplify CLI. It allows developers to create, configure, update, delete cloud services directly from the frontend environment.
-							</i>
-							<br/>
-							<br/>
-							<b>Amplify client:</b>
-							<br/><br/>
-							Its bundle of the library for easy-to-use API for JS application which needs to interact with AWS services.
-							<br/>
-							It also supports other SDKs for React native, native iOS, and native Android and frontend and mobile framework support including React, React Native, Vue, Angular, native Android, and native iOS.
-							<br/>
-							<br/>
-							<b>AWS AppSync:</b>
-							<br/>
-							AppSync is a manager API layer that uses GraphQL to make it easy for the application to interact with any data source, REST API, or microservices.
-							<br/>
-							GraphQL offers a good abstraction for creating an API gateway. It defines a consistent specification for interacting with APIs in the form of three operation
-							<ol>
-								<li>Queries (reads)</li><br/>
-								<li>Mutations (write/updates)</li><br/>
-								<li>Subscriptions (real-time data)</li><br/>
-							</ol>
-							<br/>
-							<br/>
-							Before building a GraphQl API we have to build, deploy, maintain and configure our API which  can be offloaded to AWS though AppSync
-							<br/>
-							<br/>
-							<b>Installing and configuring the Amplify CLI</b>
-							<br/>
-							First, install and configure the Amplify CLI
-							<br/>
-								<code>
-									~ npm install -g @aws-amplify/cli
-								</code>
-							<br/>
-							<br/>
-							Once it's installed you need to configure it with IAM use in your AWS account(access key ID and secret access key)
-							To create a new user and configure the CLI, run the configure command
-							<br/>
-							<code>~ amplify configure</code> 
-							<br/>
-							<br/>
-								The prompt will ask you for:
-							<br/>
-							<ol>
-								<li>Specify the AWS region</li><br/>
-								<li>Specify the username</li><br/>
-							</ol>
-							<br/>
-							<br/>						
-							Once you give the above information CLI would take you to the AWS IAM dashboard from there you can set the permission that this newly created user should have and later on IAM will generate an access key ID and secret access key for it
-							<br/><br/>
-							Go back to CLI and paste in the values for the access key ID and secret access key. 
-							<br/>
-							Now you've successfully configured the CLI and you can begin creating new services.
-							<br/>
-							<br/>
-							<b>Initializing Amplify Project: </b>
-							<br/>
-							Let's create the react app. Goto to your root folder of yours(where you want all your project files should be)
-							<br/>
-							<code>~ npm install aws-amplify @aws-amplify/ui-react.</code>
-							<br/>
-							<br/>
-							Now, we initialize our Amplify project.
-							<br/>
-							<code>~ amplify init</code>
-							<br/><br/>
-							
-							Brace yourself with the stream of questionnaires that were required to build the scaffold for your application.
-							<br/>
-							<br/>
-							<ol>
-								<li>Enter a name for the project: <i>This will be the local name for the project, usually something that describes what the project is or what it does.</i>i?</li><br/>
-								<br/>
-								<li>Enter a name for the environment: <i>This will be a reference to the initial environment that you will be working in. Typical environments in this workflow could be something like dev, local, or prod but could be anything that makes sense to you.</i></li><br/>
-								<li>Choose your default editor: <i>This will set your editor's preference. The CLI will later use this preference to open your text editor with files that are part of the current project.</i></li><br/>
-								<li>Choose the type of app that you’re building: <i>This will determine whether the CLI should configure, build, and run commands if you are using JavaScript. For this example, choose javascript.</i></li><br/>
-								<li>What JavaScript framework are you using? <i>This will determine a few bases builds and start commands. For this example, choose React.</i></li><br/>
-								<li>Choose your source directory path: <i>This allows you to set the directory where your source code will live. For this example, choose src</i></li><br/>
-								<li>Choose your distribution directory path: <i>For web projects, this will be the folder containing the complied JavaScript source, code as well as your favicon, HTML, and CSS files. For this example, choose to build.</i></li><br/>
-								<li>Choose your build command: <i>This specifies the command for compiling and bundling your JavaScript code. For this example, use npm run-script build.</i></li><br/>
-								<li>Choose your start command: <i>This specifies the command to serve your application locally. For this example, use npm run-script start.</i></li><br/>
-								<li>Do you want to use an AWS profile? <i>Here, choose Y and then pick the AWS profile you created when you ran amplify configure.</i></li><br/>
-							</ol>
-							<br/><br/>
+            Brace yourself with the stream of questionnaires that were required
+            to build the scaffold for your application.
+            <br />
+            <br />
+            <ol>
+              <li>
+                Enter a name for the project:
+                <i
+                  >This will be the local name for the project, usually
+                  something that describes what the project is or what it
+                  does.</i
+                >i?
+              </li>
+              <br />
+              <br />
+              <li>
+                Enter a name for the environment:
+                <i
+                  >This will be a reference to the initial environment that you
+                  will be working in. Typical environments in this workflow
+                  could be something like dev, local, or prod but could be
+                  anything that makes sense to you.</i
+                >
+              </li>
+              <br />
+              <li>
+                Choose your default editor:
+                <i
+                  >This will set your editor's preference. The CLI will later
+                  use this preference to open your text editor with files that
+                  are part of the current project.</i
+                >
+              </li>
+              <br />
+              <li>
+                Choose the type of app that you’re building:
+                <i
+                  >This will determine whether the CLI should configure, build,
+                  and run commands if you are using JavaScript. For this
+                  example, choose javascript.</i
+                >
+              </li>
+              <br />
+              <li>
+                What JavaScript framework are you using?
+                <i
+                  >This will determine a few bases builds and start commands.
+                  For this example, choose React.</i
+                >
+              </li>
+              <br />
+              <li>
+                Choose your source directory path:
+                <i
+                  >This allows you to set the directory where your source code
+                  will live. For this example, choose src</i
+                >
+              </li>
+              <br />
+              <li>
+                Choose your distribution directory path:
+                <i
+                  >For web projects, this will be the folder containing the
+                  complied JavaScript source, code as well as your favicon,
+                  HTML, and CSS files. For this example, choose to build.</i
+                >
+              </li>
+              <br />
+              <li>
+                Choose your build command:
+                <i
+                  >This specifies the command for compiling and bundling your
+                  JavaScript code. For this example, use npm run-script
+                  build.</i
+                >
+              </li>
+              <br />
+              <li>
+                Choose your start command:
+                <i
+                  >This specifies the command to serve your application locally.
+                  For this example, use npm run-script start.</i
+                >
+              </li>
+              <br />
+              <li>
+                Do you want to use an AWS profile?
+                <i
+                  >Here, choose Y and then pick the AWS profile you created when
+                  you ran amplify configure.</i
+                >
+              </li>
+              <br />
+            </ol>
+            <br /><br />
 
-							<b>Above will initialize your Amplify project and create the following directories.</b>
-							<br/><br/>
-							<ul>
-								<li>The aws-exports file:   The aws-exports file is a key-value pairing of the resource categories created for you by the CLI along with their credentials.</li><br/>
-								<li>The amplify folder:  This folder holds all the code and configuration files for your Amplify project. In this folder, you will see two subfolders: the backend and #current-cloud-backend folders.</li><br/>
-								<li>The backend folder:  This folder contains all the local code for your projects such as the GraphQL schema for an AppSync API, the source code for any serverless functions, and infrastructure as code representing the current local status of the Amplify project.</li><br/>
-								<li>The #current-cloud-backend folders:   This folder holds the code and configurations that reflect what resources were deployed in the cloud with your last Amplify push command. It helps the CLI differentiate between the configuration of the resources already provisioned in the cloud and what is currently in your local backend directory (which reflects your local changes)</li><br/>
-							</ul>
-							<br/>
-							<b>Now that you’ve initialized your project, you can add your first cloud service: Authentication.</b>
-							<br/>
-							<br/>
-							Creating and Deploying Authentication service:
-							<br/>
-							<br/>
-							To create a new service, run the following command on CLI
-							<br/>
-							<code>~ amplify add auth</code>
-							<br/><br/>
-							<ol>
-								<li>Do you want to use the default authentication and security configuration? <i>This gives you the option of creating an authentication service using a default configuration (MFA on sign-up, password at sign-in), creating an authentication configuration with social providers, or creating a completely custom authentication configuration.</i></li><br/>
-								<li>How do you want a user to be able to sign-in? <i>This will be sign-in property. Choose the default by username.</i></li><br/>
-								<li>Do you want to configure an advanced setting? <i>This will walk through you the advanced setting for things like additional sign-up attributes and lambda triggers. Choose No I am done</i></li><br/>
-							</ol>
+            <b
+              >Above will initialize your Amplify project and create the
+              following directories.</b
+            >
+            <br /><br />
+            <ul>
+              <li>
+                The aws-exports file: The aws-exports file is a key-value
+                pairing of the resource categories created for you by the CLI
+                along with their credentials.
+              </li>
+              <br />
+              <li>
+                The amplify folder: This folder holds all the code and
+                configuration files for your Amplify project. In this folder,
+                you will see two subfolders: the backend and
+                #current-cloud-backend folders.
+              </li>
+              <br />
+              <li>
+                The backend folder: This folder contains all the local code for
+                your projects such as the GraphQL schema for an AppSync API, the
+                source code for any serverless functions, and infrastructure as
+                code representing the current local status of the Amplify
+                project.
+              </li>
+              <br />
+              <li>
+                The #current-cloud-backend folders: This folder holds the code
+                and configurations that reflect what resources were deployed in
+                the cloud with your last Amplify push command. It helps the CLI
+                differentiate between the configuration of the resources already
+                provisioned in the cloud and what is currently in your local
+                backend directory (which reflects your local changes)
+              </li>
+              <br />
+            </ul>
+            <br />
+            <b
+              >Now that you’ve initialized your project, you can add your first
+              cloud service: Authentication.</b
+            >
+            <br />
+            <br />
+            Creating and Deploying Authentication service:
+            <br />
+            <br />
+            To create a new service, run the following command on CLI
+            <br />
+            <code>~ amplify add auth</code>
+            <br /><br />
+            <ol>
+              <li>
+                Do you want to use the default authentication and security
+                configuration?
+                <i
+                  >This gives you the option of creating an authentication
+                  service using a default configuration (MFA on sign-up,
+                  password at sign-in), creating an authentication configuration
+                  with social providers, or creating a completely custom
+                  authentication configuration.</i
+                >
+              </li>
+              <br />
+              <li>
+                How do you want a user to be able to sign-in?
+                <i
+                  >This will be sign-in property. Choose the default by
+                  username.</i
+                >
+              </li>
+              <br />
+              <li>
+                Do you want to configure an advanced setting?
+                <i
+                  >This will walk through you the advanced setting for things
+                  like additional sign-up attributes and lambda triggers. Choose
+                  No I am done</i
+                >
+              </li>
+              <br />
+            </ol>
 
-							Now we push our configuration in the cloud. Continue by pressing Y.
-							<br/>
-							<code>~ amplify push</code>
-							<br/><br/>
-							
-							After deployment is complete, your authentication service is successfully deployed.
-							Since we re using React app, we will be using the withAuthenticator higher order
-							(HOC) component the authentication service available  for methods like signUp, signIn, signOut
-							First, configure the React app to work with Amplify. To do so, open src/index.js and
-							add the following code below the last import statement:
-							<br/><br/>
-	
-							Now, the app has been configured and you can begin interacting with the authentication
-							service. Next, open src/App.js and update the file with the following code:
-							<br/><br/>
-							<script src="https://gist.github.com/pmrubenrao/fc85e837902e8c382662154987b4628f.js"></script>
-							<br/><br/>
-							At this point, you can test it out by launching the app:
-							<br/>
-							<code>~ npm start</code>
-							<br/><br/>
-							
-							Now, your app should be launched with the preconfigured authentication flow in
-							front of it. See
-							<br/><br/>
+            Now we push our configuration in the cloud. Continue by pressing Y.
+            <br />
+            <code>~ amplify push</code>
+            <br /><br />
 
+            After deployment is complete, your authentication service is
+            successfully deployed. Since we re using React app, we will be using
+            the withAuthenticator higher order (HOC) component the
+            authentication service available for methods like signUp, signIn,
+            signOut First, configure the React app to work with Amplify. To do
+            so, open src/index.js and add the following code below the last
+            import statement:
+            <br /><br />
 
-							Deleting the Resources
-							Once you no longer need a feature or a project, you can remove it using the CLI.
-							<br/><br/>
+            Now, the app has been configured and you can begin interacting with
+            the authentication service. Next, open src/App.js and update the
+            file with the following code:
+            <br /><br />
+            <script src="https://gist.github.com/pmrubenrao/fc85e837902e8c382662154987b4628f.js"></script>
+            <br /><br />
+            At this point, you can test it out by launching the app:
+            <br />
+            <code>~ npm start</code>
+            <br /><br />
 
-							To remove an individual feature, you can run the remove command:
-							<br/>
-							<code>~ amplify remove auth</code>
-							<br/>
-							<br/>
-							<a href="#" class="image featured"><img src="images/sign-in.png" alt="" /></a>
-						
-					</div>
-				</div>
+            Now, your app should be launched with the preconfigured
+            authentication flow in front of it. See
+            <br /><br />
 
-		<!-- Footer -->
-				<div id="footer">
-					<div class="container">
+            Deleting the Resources Once you no longer need a feature or a
+            project, you can remove it using the CLI.
+            <br /><br />
 
+            To remove an individual feature, you can run the remove command:
+            <br />
+            <code>~ amplify remove auth</code>
+            <br />
+            <br />
+            <a href="#" class="image featured"
+              ><img src="images/sign-in.png" alt=""
+            /></a>
+          </article>
+        </div>
+      </div>
+    </div>
 
-						<div class="row">
-							<div class="col-12">
+    <!-- Footer -->
+    <div id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <!-- Contact -->
+            <section class="contact">
+              <header>
+                <h3>Diving in the abyss of serverless.</h3>
+              </header>
+              <p font-weight="700">
+                Hi this is Ruben Rao. Its my first attempt to develop any
+                project completely on the serverless services. This website
+                demonstrates all my project behind the scenes, that I’ve
+                completed to explore and learn serverless services
+              </p>
+              <ul class="icons">
+                <li>
+                  <a
+                    href="https://twitter.com/ruben_rao10"
+                    class="icon brands fa-twitter"
+                    ><span class="label">Twitter</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://www.facebook.com/ruben.rao.75"
+                    class="icon brands fa-facebook-f"
+                    ><span class="label">Facebook</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://www.instagram.com/ruben_rao/"
+                    class="icon brands fa-instagram"
+                    ><span class="label">Instagram</span></a
+                  >
+                </li>
+              </ul>
+            </section>
 
-								<!-- Contact -->
-								<section class="contact">
-									<header>
-										<h3>Diving in the abyss of serverless. </h3>
-									</header>
-									<p font-weight="700">Hi this is Ruben Rao. Its my first attempt to develop any project completely on the serverless services. This website demonstrates all my project behind the scenes, that I’ve completed to explore and learn serverless services
-									<ul class="icons">
-										<li><a href="https://twitter.com/ruben_rao10" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-										<li><a href="https://www.facebook.com/ruben.rao.75" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-										<li><a href="https://www.instagram.com/ruben_rao/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+            <!-- Copyright -->
+            <div class="copyright">
+              <ul class="menu">
+                <li>Managed by Ruben Rao.</li>
+                <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-									</ul>
-								</section>
-
-								<!-- Copyright -->
-								<div class="copyright">
-									<ul class="menu">
-										<li>Managed by Ruben Rao.</li>
-										<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-									</ul>
-								</div>
-
-							</div>
-
-						</div>
-					</div>
-				</div>
-
-
-<!-- Scripts -->
-<script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"></script>
+    <!-- Scripts -->
+    <script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"></script>
 
     <script defer>
       kofiWidgetOverlay.draw('rubenrao79269', {
@@ -252,5 +445,5 @@
         right: auto !important;
       }
     </style>
-</body>
+  </body>
 </html>
