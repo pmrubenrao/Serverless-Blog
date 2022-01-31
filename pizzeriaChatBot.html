@@ -60,7 +60,7 @@
 						We will be using the Claudia Bot Builder to interact with Facebook API's for chatbot as it abstracts away the various messaging platform APIs and provides a simple, unified API for building you chatbots
 						<br/>
 						<br/>
-						<img src="pizzeria-chatbot_files/image001.jpg" class="image featured">
+						<img src="images/pizzeria-chatbot_files/image001.jpg" class="image featured">
 						<b>Setting up the Claudia Bot Builder in local.</b>
 						<br/>
 						Create a new folder named <i>facebook-chatbot”</i> and initialize you NPM project and create the entry point to bot.js, this is the entry point for your application
@@ -111,14 +111,14 @@
 						Create page looks like the below snap, use your imagination for filling up ”page name and description” and for category select ”App Page”
 						<br/>
 						<br/>
-						<img src="pizzeria-chatbot_files/image007.png" class="image featured">
+						<img src="images/pizzeria-chatbot_files/image007.png" class="image featured">
 						
 						<b>Creating Facebook Application:</b>
 						<br/>
 						The next step is to create the Facebook Application, to do so visit <a href="https://developers.facebook.com/apps/">https://developers.facebook.com/apps/</a> and select the “Create App”
 						<br/>
 						<br/>
-						<img src="pizzeria-chatbot_files/image008.png" class="image featured">
+						<img src="images/pizzeria-chatbot_files/image008.png" class="image featured">
 
 						At the time of writing this post page look like this, it may be different for you since Facebook folks keep pushing the UI changes.
 						<br/>
@@ -136,7 +136,7 @@
 						After submitting the above questions you will land on the Dashboard of your app which will have your App ID displayed on the top right corner.
 						<br/>
 						<br/>
-						<img src="pizzeria-chatbot_files/image009.png" class="image featured">
+						<img src="images/pizzeria-chatbot_files/image009.png" class="image featured">
 
 						Next, we add a product to our app which will be “Messenger” click on the Set-Up
 						<br/>
@@ -155,13 +155,13 @@
 						Keep the terminal open, because the process is not completed yet.
 						<br/>
 						<br/>
-						<img src="pizzeria-chatbot_files/image010.png" class="image featured">
+						<img src="images/pizzeria-chatbot_files/image010.png" class="image featured">
 						Go back to the Messenger platform setting in your browser and fill out the webhook URL and verify the token
 						<br/>
 						<br/>
 						The Webhook section should look like the below image.
 						<br/>
-						<img src="pizzeria-chatbot_files/image011.png" class="image featured">
+						<img src="images/pizzeria-chatbot_files/image011.png" class="image featured">
 
 
 						Now under the Webhooks section of the messenger setting and select <i>“messages”</i> and <i>“messaging_postbacks”</i><i></i> in the subscription field.
@@ -169,19 +169,19 @@
 						<br/>
 						I didn't explore more about this webhooks but what I understand is that these events were responsible for capturing the message typed in the messenger app, later which is used in the development of the business logic of the ordering system
 
-						<img src="pizzeria-chatbot_files/image012.png" class="image featured">
+						<img src="images/pizzeria-chatbot_files/image012.png" class="image featured">
 
 						The next step is to get your Facebook page access token. To do so, go to the <b>Access Token </b>of the Messenger Product and select the Facebook page you created earlier from the dropdown menu, and click the “<i>Generate Token</i>” and press enter
 						<br/>
 						<br/>
 
-						<img src="pizzeria-chatbot_files/image013.png" class="image featured">
+						<img src="images/pizzeria-chatbot_files/image013.png" class="image featured">
 
 						The terminal would again ask you for <b>App secret</b> which can be found under the Application&gt; Setting &gt; Basic as shown in the above image.
 						<br/>
 						<br/>
 
-						<img src="pizzeria-chatbot_files/image014.png" class="image featured">
+						<img src="images/pizzeria-chatbot_files/image014.png" class="image featured">
 						<br/>
 						<br/>
 
@@ -211,7 +211,7 @@
 						<b><a href="https://stackoverflow.com/questions/53778224/how-to-solve-the-parameter-subscribed-fields-is-required-error-while-subscribi">https://stackoverflow.com/questions/53778224/how-to-solve-the-parameter-subscribed-fields-is-required-error-while-subscribi</a></b>
 						<br/>
 						<br/>
-						<img src="pizzeria-chatbot_files/image013.png" class="image featured">
+						<img src="images/pizzeria-chatbot_files/image013.png" class="image featured">
 						If you run into the issue even after changing the above code, run 
 						<code>npm package “patch-package” </code> add it to the dependencies of your project in the package.json file this will force Claudia to use the new modified <b><i>&lt;Yourfolder&gt;/node_module</span>/Claudia-bot-builder/facebook/lib/script.js</i></b> file for building our infrastructure for the chat-bot.
 						<br/>
@@ -238,7 +238,7 @@
 						Open your messenger app and try messaging your Facebook page profile like “<i>hi</i>” or “<i>hello</i>” anything you want you will get the response from the bot.js return function <code>“Hello from Pizzeria Chat-bot!”</code>
 						<br/>
 						<br/>
-						<img src="pizzeria-chatbot_files/fb_messenger_demo.gif" >
+						<img src="images/pizzeria-chatbot_files/fb_messenger_demo.gif" >
 						<br/>
 						<br/>
 						Now, this chatbot can be expanded to handle the whole ordering system. You can see full version of it in the below GIF. i'll be uploading the code in my git hub account soon for the below MVP chat-bot ordering system. 
@@ -247,7 +247,7 @@
 						<b>Till then, Adios Amigos</b>
 						<br/>
 						<br/>
-						<img src="pizzeria-chatbot_files/fb_messenger_mvp.gif" >
+						<img src="images/pizzeria-chatbot_files/fb_messenger_mvp.gif" >
 						<br/>
 						<br/>
 						</article>

@@ -49,7 +49,7 @@
 									<li>Payment channel</li><br/>
 								</ol>
 
-								<img src="pizzeria_files/image001.jpg" class="image featured">
+								<img src="images/pizzeria_files/image001.jpg" class="image featured">
 								<br/>
 								All these channels were separated and developed in an
 								isolated environment(lambda functions) and a single API is used to route the
@@ -96,7 +96,7 @@
 								
 								Every path you see in the below figure is the separate path that was created by the Claudia API Builder to serve the request from the user and send/receive the feed/response from their correspoing the lambda function, which them server back to the user accordingly
 
-								<img src="pizzeria_files/image002.jpg" class="image featured">
+								<img src="images/pizzeria_files/image002.jpg" class="image featured">
 
 								<ol>
 									<li>The user sends the request from a mobile or web application that will be transmitted to backend logic through the API Gateway.</li><br/>
@@ -114,7 +114,7 @@
 								<br/><br/>
 								The below figure will show us how the function will interact with Dynamo DB and stores the information about order
 								<br/><br/>
-								<img src="pizzeria_files/image003.jpg" class="image featured">
+								<img src="images/pizzeria_files/image003.jpg" class="image featured">
 								<br/><br/>
 								Once oder is placed we use a third-party API to handles the delivery state of our order
 								<br/><br/>
@@ -124,7 +124,7 @@
 								<br/><br/>
 								Upon receiving the response from the Dummy API  <b>create-order</b> function will make the entries in the Dynamo DB table to save the state of the order.
 								<br/><br/>
-								<img src="pizzeria_files/image004.jpg" class="image featured">
+								<img src="images/pizzeria_files/image004.jpg" class="image featured">
 								<br/><br/>
 								Detailed illustration of the order flow from customers to delivery API.
 								<br/><br/>
@@ -135,7 +135,7 @@
 									<li><span style='color:#538135'>On the above event response, it triggers the <i>update_order</i> function which updates the status of  an order from “<i>pending</i>” to “<i>in-progress</i>” to the Dynamo DB</span></li><br/>
 									<li><span style='color:#7030A0'>After 2 minutes Dummy API again send a response to the Pizza API which mark the order status to “<i>Delivery </i>” </span></li><br/>
 								</ol>
-								<img src="pizzeria_files/image005.jpg" class="image featured">
+								<img src="images/pizzeria_files/image005.jpg" class="image featured">
 
 								This is all we have to configure and code to make it all work.
 
