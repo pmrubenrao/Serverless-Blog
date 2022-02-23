@@ -1,2 +1,3 @@
 # Serverless-Blog
-This blog contains projects with the prime focus on serverless technology
+
+This blog contains projects with the prime focus on serverless technology.
