@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<!--
+	Helios by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+  <head>
+    <title>A SERVERLESS PROJECT</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript
+      ><link rel="stylesheet" href="assets/css/noscript.css"
+    /></noscript>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-174482799-2"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'UA-174482799-2');
+    </script>
+  </head>
+  <body class="no-sidebar is-preload">
+    <div id="page-wrapper">
+      <!-- Main -->
+      <div class="WordSection1">
+        <div class="wrapper style1">
+          <div class="container">
+            <article id="main" class="special">
+              <a href="./index.html" style="position: fixed; right: 91%">
+                <img src="./images/back.svg" style="width: 2rem; height: 2rem"
+              /></a>
+              <header>
+                <h2><a href="#">ACCIO - An event viewer</a></h2>
+                <p>A JSON viewer for visualising the API request's</p>
+              </header>
+              <p>
+                The current project that I handle in my current organization
+                facilitates the fintech companies to communicate with the
+                banking services like checking the account balances, making
+                payments, creating standing orders for OTT subscriptions, etc.
+                <br /><br />
+                One of the roles we have as apart from usual backend stuff is to
+                analyze and resolve the queries from our financial service
+                provider.
+                <br /><br />
+                Analyses and finding that we require to find the cause of a real
+                problem need us to follow specific steps:
+                <br />
+              </p>
+
+              <ol>
+                <li>
+                  Find the unique request-id, usually the starting point of our
+                  investigation and provided by the FinTech provider.
+                </li>
+                <li>
+                  Check the application health at the time the request reaches
+                  our application from the FinTech provider.
+                </li>
+                <li>
+                  Find and analyze the whole request lifecycle, which varies
+                  from the type of transaction the user performed.
+                </li>
+                <li>
+                  Search the application log file to find any failures or
+                  rejections.
+                </li>
+                <li>
+                  Investigating the actual request and response made from the
+                  API.
+                </li>
+              </ol>
+
+              <br />
+              The above process is too manual, and it's not ideal if we need to
+              check the multiple requests at the same time. This whole manual
+              process fuels my inner lazy guy to either ignore it or do
+              something about it, and for the latter choice, I've to build
+              something which removes all manual tasks, making the lazy guy
+              happy.
+              <br /><br />
+
+              And to get details from the database, we have to perform specific
+              operations for every request in our queue for analyses.
+              <br /><br />
+
+              Next section we will explore more about the architecture of the
+              Web, Facebook, and SMS chat boot.
+              <br /><br />
+
+              <ol>
+                <li>Log in to the database.</li>
+                <li>
+                  Query the database table which stores all the events(lifecycle
+                  of request) of a particular request.
+                  <ol>
+                    <li>
+                      For every individual request, we have multiple events
+                      triggered to complete its lifecycle, and each such request
+                      has its own entry or row inside the database table; let's
+                      call this table LOG_TABLE.
+                    </li>
+                    <li>
+                      For analyzing any request, we have to check all the event
+                      req/res data to find the possible cause for a failure.
+                    </li>
+                  </ol>
+                </li>
+                <li>
+                  If we have to check any event, we need to copy the BLOB field
+                  of that event from the LOG_TABLE and then paste it to the IDE
+                  or notepad++.
+                </li>
+                <li>
+                  Then we have to re-format the JSON req/res because it wasn't
+                  in a readable format when we copied it from the LOG_TABLE.
+                </li>
+              </ol>
+              <br /><br />
+              The above process is too manual, and it's not ideal if we need to
+              check the multiple requests at the same time. This whole manual
+              process fuels my inner lazy guy to either ignore it or do
+              something about it, and for the latter choice, I've to build
+              something which removes all manual tasks, making the lazy guy
+              happy.
+              <br /><br />
+
+              <h3>Designing the Frontend</h3>
+
+              After struggling with data extraction, now I know where to
+              start.<br /><br />
+              Every request identification number we receive from our source is
+              the first piece of information we have to begin with, and for
+              that, I need a pleasant and straightforward frontend.
+              <br /><br />
+
+              I sketched the layout below and added some extra features that
+              would help me identify the problem.<br /><br />
+              The design I started with initially changed quite a bit because
+              some of the features I wanted to add were more on the gimmicky
+              side rather than useful for analysis.
+              <br /><br />
+              <img
+                src="images/accio_file/design-1.png"
+                class="image featured"
+              />
+              And after adding some more features like the table-view to select
+              the event and view the event information, my primary purpose of
+              creating this application is completed.<br /><br />
+              <img
+                src="images/accio_file/design-2.png"
+                class="image featured"
+              />
+              <h3>Future Enhancement:</h3>
+              I believe there's always room for improvement, and I try to add
+              those features regularly if I find something during my analysis of
+              a new problem.
+              <br /><br />
+              The most helpful feature I wanted was to add a layout of the API
+              call in a graphical way, which is a visual representation of the
+              API's call made for the incoming request. GUI representation of
+              the API's flow will help the new employees visualize the whole
+              lifecycle of the actual request.
+              <br /><br />
+              My current plan is to add the status page, which runs the
+              predefined queries to extract the stats from the database and
+              display them on the main page.
+              <br /><br />
+
+              <h3>Final product:</h3>
+              Below is a snapshot of the main page and one sample request
+              extraction in gif format.
+              <br /><br />
+              <img
+                src="images/accio_file/accio-demo1.gif"
+                style="width: 100%; height: auto"
+              />
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <!-- Contact -->
+            <section class="contact">
+              <header>
+                <h3>Diving in the abyss of serverless.</h3>
+              </header>
+              <p style="font-weight: 700">
+                Hi this is Ruben Rao. Its my first attempt to develop any
+                project completely on the serverless services. This website
+                demonstrates all my project behind the scenes, that I've
+                completed to explore and learn serverless services
+              </p>
+              <ul class="icons">
+                <li>
+                  <a
+                    href="https://twitter.com/ruben_rao10"
+                    class="icon brands fa-twitter"
+                    ><span class="label">Twitter</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://www.facebook.com/ruben.rao.75"
+                    class="icon brands fa-facebook-f"
+                    ><span class="label">Facebook</span></a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://www.instagram.com/ruben_rao/"
+                    class="icon brands fa-instagram"
+                    ><span class="label">Instagram</span></a
+                  >
+                </li>
+              </ul>
+            </section>
+
+            <!-- Copyright -->
+            <div class="copyright">
+              <ul class="menu">
+                <li>Managed by Ruben Rao.</li>
+                <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"></script>
+    <script defer>
+      kofiWidgetOverlay.draw('rubenrao79269', {
+        type: 'floating-chat',
+        'floating-chat.donateButton.text': '',
+        'floating-chat.donateButton.background-color': '#323842',
+        'floating-chat.donateButton.text-color': '#fff',
+      });
+    </script>
+    <style defer>
+      .floatingchat-container-wrap,
+      .floatingchat-container-wrap-mobi,
+      .floating-chat-kofi-popup-iframe,
+      .floating-chat-kofi-popup-iframe-mobi {
+        left: auto !important;
+        right: 5px !important;
+        bottom: 8px;
+        width: 15%;
+      }
+      .floatingchat-donate-button {
+        padding: 0px;
+        height: 45px;
+      }
+      .kofiimg {
+        padding-left: 1.5em;
+        width: 29px;
+      }
+      .floating-chat-kofi-popup-iframe-closer,
+      .floating-chat-kofi-popup-iframe-closer-mobi {
+        left: -10px !important;
+        right: auto !important;
+      }
+    </style>
+  </body>
+</html>
